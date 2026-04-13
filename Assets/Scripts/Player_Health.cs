@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public class PlayerHealth : MonoBehaviour
+public class Player_Health : MonoBehaviour
 {
     public float health = 100f;
     public TextMeshProUGUI healthText;

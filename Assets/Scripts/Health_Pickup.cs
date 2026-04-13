@@ -1,18 +1,18 @@
 using UnityEngine;
 
-public class Pickup : MonoBehaviour
+public class Health_Pickup : MonoBehaviour
 {
-    public float healAmount = 25f;
+    public int healAmount = 25;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            PlayerHealth ph = other.GetComponent<PlayerHealth>();
+            Player_Script ph = other.GetComponent<Player_Script>();
 
             if (ph != null)
             {
-                ph.Heal(healAmount);
+                ph.addHealth(healAmount);
             }
 
             Destroy(gameObject);

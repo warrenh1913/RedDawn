@@ -11,14 +11,14 @@ public class Move_To_Player : MonoBehaviour
     private float realSpeed;
     private Transform playerTransform;
 
-    private Enemy_SovietNormal panelScript;
+    private Enemy_Soviet_Normal panelScript;
     void Start(){
         if(player == null){
             print("Move_To_Player Script is missing player reference");
         } 
         realSpeed = movementSpeed; //* 0.1f;
         playerTransform = player.GetComponent<Transform>();
-        panelScript = transform.Find("Panel").GetComponent<Enemy_SovietNormal>();
+        panelScript = transform.Find("Panel").GetComponent<Enemy_Soviet_Normal>();
     }
 
     // Update is called once per frame
