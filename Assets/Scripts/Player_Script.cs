@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class playerScript : MonoBehaviour
+public class Player_Script : MonoBehaviour
 {
     float cooldown = 0.5f;
     float timePassed = 0f;
@@ -44,6 +44,11 @@ public class playerScript : MonoBehaviour
         //print("player X: " + transform.position.x + " Player Y: " + transform.position.y);
 
         //print(transform.Find("Main Camera").transform.rotation.y * 360);
+    }
+
+    public void addHealth(int num){
+        health += num;
+        screen.transform.Find("Health").transform.Find("HealthCounter").GetComponent<Text>().text = health.ToString();
     }
 
     

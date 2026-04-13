@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyChase : MonoBehaviour
+public class Enemy_Chase : MonoBehaviour
 {
     public Transform player;
     public float moveSpeed = 2f;
@@ -35,7 +35,7 @@ public class EnemyChase : MonoBehaviour
 
         if (Time.time >= lastDamageTime + damageCooldown)
         {
-            PlayerHealth health = other.GetComponent<PlayerHealth>();
+            Player_Health health = other.GetComponent<Player_Health>();
 
             if (health != null)
             {
