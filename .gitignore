@@ -5,3 +5,5 @@ UserSettings
 .vs
 RedDawn.sln
 .vsCode
+.vsconfig
+.csproj
