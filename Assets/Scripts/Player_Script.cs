@@ -19,12 +19,14 @@ public class Player_Script : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(playerGun == null){
+        if (playerGun == null)
+        {
             print("Player Script missing gun object");
         }
-        if(screen == null){
+        if (screen == null)
+        {
             print("Player Script missing UI");
-        }  
+        }
     }
 
     
@@ -53,20 +55,41 @@ public class Player_Script : MonoBehaviour
             
             
             screen.transform.Find("Ammo").transform.Find("AmmoCounter").GetComponent<Text>().text = ammo.ToString();
-            
-            
+
+
         }
         //print("player X: " + transform.position.x + " Player Y: " + transform.position.y);
 
         //print(transform.Find("Main Camera").transform.rotation.y * 360);
     }
 
-    public void addHealth(int num){
+    public void addHealth(int num)
+    {
         health += num;
         screen.transform.Find("Health").transform.Find("HealthCounter").GetComponent<Text>().text = health.ToString();
     }
 
-    
+    public void addpammo(int num)
+    {
+        ammo += num;
+        screen.transform.Find("Ammo").transform.Find("AmmoCounter").GetComponent<Text>().text = ammo.ToString();
+    }
 
-    
+    public void addsammo(int num)
+    {
+        ammo += num;
+        screen.transform.Find("Ammo").transform.Find("AmmoCounter").GetComponent<Text>().text = ammo.ToString();
+    }
+
+    public void addmammo(int num)
+    {
+        ammo += num;
+        screen.transform.Find("Ammo").transform.Find("AmmoCounter").GetComponent<Text>().text = ammo.ToString();
+    }
+
+
+
+
+
+
 }
