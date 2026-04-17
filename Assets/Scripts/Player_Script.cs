@@ -6,10 +6,13 @@ using UnityEngine.UI;
 public class Player_Script : MonoBehaviour
 {
     float cooldown = 0.5f;
-    float timePassed = 0f;
+    
 
     int health = 100;
-    int ammo = 10;
+    int ammo = 100;
+    
+
+    private char gunEquipped = 'p';
 
     public GameObject screen;
     public GameObject playerGun;
@@ -24,19 +27,31 @@ public class Player_Script : MonoBehaviour
         }  
     }
 
+    
+
     // Update is called once per frame
     void Update()
     {
         
-        timePassed += Time.deltaTime;
         
         
-        if(Input.GetButton("Fire1") && timePassed >= cooldown && ammo > 0){
+        
+        if(Input.GetButton("Fire1") && playerGun.GetComponent<Gun_Pistol>().checkAmmo(gunEquipped)){
 
-            playerGun.GetComponent<Gun_Pistol>().shoot();
-            ammo--;
+
+            if(gunEquipped == 'p'){
+                playerGun.GetComponent<Gun_Pistol>().shootPistol();
+            }else if(gunEquipped == 's'){
+                playerGun.GetComponent<Gun_Pistol>().shootShotgun();
+            }else if(gunEquipped == 'm'){
+                playerGun.GetComponent<Gun_Pistol>().shootMachinegun(true);
+            }else{ 
             
-            timePassed = 0f;
+            }
+            
+            
+            
+            
             screen.transform.Find("Ammo").transform.Find("AmmoCounter").GetComponent<Text>().text = ammo.ToString();
             
             
