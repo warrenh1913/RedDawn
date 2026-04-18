@@ -19,7 +19,7 @@ public class Move_To_Player : MonoBehaviour
         if(player == null){
             print("Move_To_Player Script is missing player reference");
         } 
-        realSpeed = movementSpeed; //* 0.1f;
+        realSpeed = movementSpeed * 0.4f;
         playerTransform = player.GetComponent<Transform>();
         panelScript = transform.Find("Panel").GetComponent<Enemy_Soviet_Normal>();
     }
@@ -75,7 +75,7 @@ public class Move_To_Player : MonoBehaviour
 
         Physics.Raycast(transform.position,temp * 50 * -1,out hit, 50);
         
-        Debug.DrawRay(transform.position, temp * 50 * -1, Color.green, 50);
+        //Debug.DrawRay(transform.position, temp * 50 * -1, Color.green, 50);
         if(hit.collider == null){
             return false;
         }else{

@@ -12,7 +12,7 @@ public class Player_Script : MonoBehaviour
     int ammo = 100;
     
 
-    private char gunEquipped = 'p';
+    private char gunEquipped = 's';
 
     public GameObject screen;
     public GameObject playerGun;
