@@ -15,6 +15,8 @@ public class Enemy_Soviet_Normal : MonoBehaviour
             print("Enemy_SovietNormal Script is missing camera object reference ");
         }
         
+        transform.parent.gameObject.transform.rotation = new Quaternion(0f,0f,0f,0f);
+
     }
 
     // Update is called once per frame
@@ -23,7 +25,10 @@ public class Enemy_Soviet_Normal : MonoBehaviour
         
         // transform.Rotate(new Vector3(camera.transform.rotation.y * 360,0f,0f));
         //transform.LookAt(camera.transform,Vector3.left);
+        
         transform.localEulerAngles = new Vector3(0f,camera.transform.eulerAngles.y - 90,90f);
+        
+        //transform.localEulerAngles = new Vector3(0f,camera.transform.eulerAngles.y,0f);
         //transform.Rotate(new Vector3(Time.deltaTime * 10,0f,0f));
         // can see player
         
