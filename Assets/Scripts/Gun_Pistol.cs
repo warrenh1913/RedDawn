@@ -34,7 +34,7 @@ public class Gun_Pistol : MonoBehaviour
     void Update()
     {
         timePassed += Time.deltaTime;
-        print(timePassed);
+        
     }
 
     public bool checkAmmo(char gunType){
@@ -160,8 +160,7 @@ public class Gun_Pistol : MonoBehaviour
             float temp1 = Mathf.Max(-.15f,-repeatFire/100f); float temp2 = Mathf.Min(.15f,repeatFire/100f);
             Vector3 recoil = transform.right * Random.Range(temp1,temp2);
 
-            print("temp1 is: " + temp1);
-            print("temp2 is: " + temp2);
+            
             Vector3 vecX = transform.forward + (recoil);
 
             bool hitEnemy =  Physics.Raycast(transform.position, vecX.normalized ,out hit, 40f);
