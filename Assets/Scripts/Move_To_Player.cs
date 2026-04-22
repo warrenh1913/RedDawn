@@ -15,6 +15,8 @@ public class Move_To_Player : MonoBehaviour
     private float realSpeed;
     private Transform playerTransform;
 
+    public int moveToRange = 50;
+
     
     
 
@@ -181,7 +183,9 @@ public class Move_To_Player : MonoBehaviour
         Physics.Raycast(transform.position,temp * 50 ,out hit, 50);
         
         //Debug.DrawRay(transform.position, temp * 50 * -1, Color.green, 50);
-        if(hit.collider == null){
+
+        
+        if(hit.collider == null || hit.distance < moveToRange){
             return false;
         }else{
             return hit.collider.tag == "Player";

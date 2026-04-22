@@ -244,6 +244,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4822872417504146240, guid: 81d3e132d313cb445a8c13783a1963c9, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1938096529}
+    - target: {fileID: 4822872417504146240, guid: 81d3e132d313cb445a8c13783a1963c9, type: 3}
+      propertyPath: moveToRange
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4822872417504146270, guid: 81d3e132d313cb445a8c13783a1963c9, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -1285,9 +1293,21 @@ PrefabInstance:
       propertyPath: screen
       value: 
       objectReference: {fileID: 609098315}
+    - target: {fileID: 6603822432926678522, guid: f59910f82b4318745a9f12ed0e0f2fd5, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6603822433597102376, guid: f59910f82b4318745a9f12ed0e0f2fd5, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6603822433597102382, guid: f59910f82b4318745a9f12ed0e0f2fd5, type: 3}
       propertyPath: cam
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6603822433621643054, guid: f59910f82b4318745a9f12ed0e0f2fd5, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6603822434107101465, guid: f59910f82b4318745a9f12ed0e0f2fd5, type: 3}
       propertyPath: m_RootOrder
@@ -1336,6 +1356,10 @@ PrefabInstance:
     - target: {fileID: 6603822434107101466, guid: f59910f82b4318745a9f12ed0e0f2fd5, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6603822434107101466, guid: f59910f82b4318745a9f12ed0e0f2fd5, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f59910f82b4318745a9f12ed0e0f2fd5, type: 3}

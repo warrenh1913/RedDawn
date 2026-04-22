@@ -88,6 +88,7 @@ public class Player_Script : MonoBehaviour
     }
 
     public void hitPlayer(int damage){
+        print("player hit");
         health -= damage;
     }
 
