@@ -149,6 +149,11 @@ public class Player_Script : MonoBehaviour
         screen.transform.Find("Ammo").transform.Find("AmmoCounter").GetComponent<Text>().text = ammo.ToString();
     }
 
+    public void hitPlayer(int damage){
+        print("player hit");
+        health -= damage;
+    }
+
 
 
 

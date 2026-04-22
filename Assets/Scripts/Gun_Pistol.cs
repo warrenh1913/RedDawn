@@ -35,8 +35,7 @@ public class Gun_Pistol : MonoBehaviour
     void Update()
     {
         timePassed += Time.deltaTime;
-        //Debug.DrawRay(transform.position, transform.forward * 50, Color.blue);
-        //print(timePassed);
+        
     }
 
     public bool checkAmmo(char gunType){
@@ -117,13 +116,13 @@ public class Gun_Pistol : MonoBehaviour
         RaycastHit hit;
         
         if(repeatFire > 4){
-            float temp1 = Mathf.Max(-.15f, -repeatFire/100f); 
-            float temp2 = Mathf.Min(.15f, repeatFire/100f);
-            Vector3 recoil = transform.right * Random.Range(temp1, temp2);
+            float temp1 = Mathf.Max(-.15f,-repeatFire/100f); float temp2 = Mathf.Min(.15f,repeatFire/100f);
+            Vector3 recoil = transform.right * Random.Range(temp1,temp2);
+
             
-            Vector3 vecX = transform.forward + recoil;
-            
-            Physics.Raycast(transform.position, vecX.normalized, out hit, 40f);
+            Vector3 vecX = transform.forward + (recoil);
+
+            bool hitEnemy =  Physics.Raycast(transform.position, vecX.normalized ,out hit, 40f);
             Debug.DrawRay(transform.position, vecX * 40, Color.green, 10f);
         }else{
             Physics.Raycast(transform.position, transform.forward, out hit, 50f);
