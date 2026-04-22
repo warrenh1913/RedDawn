@@ -11,9 +11,11 @@ public class Enemy_Soviet_Thrower : MonoBehaviour{
 
     public GameObject shot;
 
-    private int hitCooldown = 250;
+    private float hitCooldown = 1.75f;
 
     private Quaternion currentRotation;
+
+    private float timePassed = 0f;
 
     
     void Start()
@@ -28,6 +30,7 @@ public class Enemy_Soviet_Thrower : MonoBehaviour{
     // Update is called once per frame
     void Update()
     {
+        timePassed += Time.deltaTime;
         Vector3 rotation = (player.transform.position - transform.position ).normalized;
         rotation.y = 0;
         
@@ -49,16 +52,15 @@ public class Enemy_Soviet_Thrower : MonoBehaviour{
 
         // RaycastHit hit;
         //print("deltaTime: " + Time.deltaTime);
-        print("fixedDeltaTime: " + Time.fixedDeltaTime);
 
                
 
         if(seePlayer()){
-            hitCooldown--;
+            
             //print(hitCooldown);
             
             
-            if(hitCooldown <= 0){
+            if(timePassed >= hitCooldown){
 
                 
 
@@ -67,6 +69,7 @@ public class Enemy_Soviet_Thrower : MonoBehaviour{
                 //Quaternion temp2 = new Quaternion(temp.x,temp.y,temp.z,0);
                 // temp2.LookRotation(temp);
                 //
+                
                 Vector3 temp = (player.transform.position - transform.position ).normalized;
 
                 Instantiate(shot,transform.position,Quaternion.LookRotation(temp));
@@ -75,12 +78,12 @@ public class Enemy_Soviet_Thrower : MonoBehaviour{
 
                 Debug.DrawRay(transform.position, temp * 50, Color.green, 50);
 
-                hitCooldown = 200;
+                timePassed = 0;
 
                 // print("rotation for ball: " + Quaternion.LookRotation(temp));
             }
         }else{
-            hitCooldown = 200;
+            timePassed = 0;
         }
         
 
