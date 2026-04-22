@@ -11,7 +11,7 @@ public class Gun_Pistol : MonoBehaviour
     private Transform gunPos;
 
     float timePassed = 0f;
-    private int repeatFire = 0;
+    
 
     int pistolAmmo = 15;
     int shotgunAmmo = 5;
@@ -100,23 +100,18 @@ public class Gun_Pistol : MonoBehaviour
         timePassed = 0f;
     }
 
-   public void shootMachinegun(bool repeat){
+   public void shootMachinegun(int repeat){
         if(machinegunCooldown > timePassed){
             return;
         }
 
         if(gunVisuals != null) gunVisuals.PlayMachinegunEffects();
         
-        if(repeat){
-            repeatFire++;
-        }else{
-            repeatFire = 0;
-        }
 
         RaycastHit hit;
         
-        if(repeatFire > 4){
-            float temp1 = Mathf.Max(-.15f,-repeatFire/100f); float temp2 = Mathf.Min(.15f,repeatFire/100f);
+        if(repeat > 4){
+            float temp1 = Mathf.Max(-.115f,-repeat/100f); float temp2 = Mathf.Min(.115f,repeat/100f);
             Vector3 recoil = transform.right * Random.Range(temp1,temp2);
 
             

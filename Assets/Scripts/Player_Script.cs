@@ -20,6 +20,8 @@ public class Player_Script : MonoBehaviour
     
     public Text weaponText;
 
+    private int machinegunCount = 0;
+
      private int currentWeapon = 1;
     // Start is called before the first frame update
     void Start()
@@ -68,10 +70,20 @@ public class Player_Script : MonoBehaviour
     
     screen.transform.Find("Ammo").transform.Find("AmmoCounter").GetComponent<Text>().text = ammo.ToString();
 }
-    
+
+
+    if(!Input.GetButton("Fire1")){
+        machinegunCount = 0;
+    } 
     /* Machine Gun */
     if(Input.GetButton("Fire1") && gunEquipped == 'm' && playerGun.GetComponent<Gun_Pistol>().checkAmmo(gunEquipped)) {
-        playerGun.GetComponent<Gun_Pistol>().shootMachinegun(true);
+
+        
+        
+        playerGun.GetComponent<Gun_Pistol>().shootMachinegun(machinegunCount);
+        
+        machinegunCount++;
+
     
         screen.transform.Find("Ammo").transform.Find("AmmoCounter").GetComponent<Text>().text = ammo.ToString();
     }
