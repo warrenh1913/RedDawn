@@ -15,7 +15,9 @@ public class Move_To_Player : MonoBehaviour
     private float realSpeed;
     private Transform playerTransform;
 
-    public int moveToRange = 50;
+    public int moveToRange = 0;
+
+    public int sides = 1;
 
     
     
@@ -61,12 +63,12 @@ public class Move_To_Player : MonoBehaviour
 
         LayerMask mask = LayerMask.GetMask("Wall");
         //right
-        Physics.Raycast(panel.transform.position + panel.transform.forward * width/2,panel.transform.forward,out checkRight,1f,mask);
-        Debug.DrawRay(panel.transform.position + panel.transform.forward * width/2,panel.transform.forward * 1, Color.green, 25);
+        Physics.Raycast(panel.transform.position + panel.transform.forward * width/2,panel.transform.forward * sides,out checkRight,1f,mask);
+        Debug.DrawRay(panel.transform.position + panel.transform.forward * width/2,panel.transform.forward * sides, Color.green, 25);
 
         //left
-        Physics.Raycast(panel.transform.position - panel.transform.forward * width/2,-panel.transform.forward,out checkLeft,1f,mask);
-        Debug.DrawRay(panel.transform.position - panel.transform.forward * width/2,panel.transform.forward * -1, Color.green, 25);
+        Physics.Raycast(panel.transform.position - panel.transform.forward * width/2,-panel.transform.forward * sides,out checkLeft,1f,mask);
+        Debug.DrawRay(panel.transform.position - panel.transform.forward * width/2,panel.transform.forward * -sides, Color.green, 25);
 
         if(checkLeft.collider != null){
             objectLeft = true;
@@ -121,16 +123,16 @@ public class Move_To_Player : MonoBehaviour
             
             if(objectLeft && objectRight){
                 print("both objects hit");
-                transform.Translate(panel.transform.up * Time.fixedDeltaTime * realSpeed,Space.Self);
+                transform.Translate(panel.transform.up * Time.deltaTime * realSpeed,Space.Self);
             }else if(objectLeft){
                 print("left object hit");
-                transform.Translate(((panel.transform.up + new Vector3(-panel.transform.up.x,0,0)) + (panel.transform.forward * .2f)) * Time.fixedDeltaTime * realSpeed,Space.Self);
+                transform.Translate(((panel.transform.up + new Vector3(-panel.transform.up.x,0,0)) + (panel.transform.forward * .2f)) * Time.deltaTime * realSpeed,Space.Self);
             }else if(objectRight){
                 print("right object hit");
-                transform.Translate(((panel.transform.up + new Vector3(-panel.transform.up.x,0,0)) + (-panel.transform.forward * .2f)) * Time.fixedDeltaTime * realSpeed,Space.Self);
+                transform.Translate(((panel.transform.up + new Vector3(-panel.transform.up.x,0,0)) + (-panel.transform.forward * .2f)) * Time.deltaTime * realSpeed,Space.Self);
             }else{
                 print("no objects hit");
-                transform.Translate(panel.transform.up * Time.fixedDeltaTime * realSpeed,Space.Self);
+                transform.Translate(panel.transform.up * Time.deltaTime * realSpeed,Space.Self);
             }
             
             
