@@ -34,6 +34,8 @@ public class Player_Script : MonoBehaviour
         }
 
         UpdateWeapon();
+
+      
     }
 
 
@@ -95,42 +97,53 @@ public class Player_Script : MonoBehaviour
                 break;
         }
         UpdateWeaponUI();
+        UpdateAmmoUI();
     }
 
-   void UpdateWeaponUI(){
+    void UpdateWeaponUI()
+    {
         string weaponName = "";
         Color weaponColor = Color.white;
-        
-        switch(currentWeapon)
+
+        switch (currentWeapon)
         {
-            case 1: 
-                weaponName = "PISTOL"; 
+            case 1:
+                weaponName = "PISTOL";
                 weaponColor = Color.green;
                 break;
-            case 2: 
-                weaponName = "SHOTGUN"; 
+            case 2:
+                weaponName = "SHOTGUN";
                 weaponColor = new Color(1f, 0.5f, 0f);
                 break;
-            case 3: 
-                weaponName = "MACHINEGUN"; 
+            case 3:
+                weaponName = "MACHINEGUN";
                 weaponColor = Color.red;
                 break;
         }
-        
+
         if (weaponText != null)
         {
             weaponText.text = weaponName;
             weaponText.color = weaponColor;
         }
     }
-  
+
+    public bool HasFullHealth()
+    {
+        return health >= 100;
+    }
+
 
     public void addHealth(int num)
     {
         health += num;
+        if (health > 100)
+        {
+            health = 100;
+        }
         screen.transform.Find("Health").transform.Find("HealthCounter").GetComponent<Text>().text = health.ToString();
     }
-
+    /**
     public void addpammo(int num)
     {
         ammo += num;
@@ -149,14 +162,35 @@ public class Player_Script : MonoBehaviour
         screen.transform.Find("Ammo").transform.Find("AmmoCounter").GetComponent<Text>().text = ammo.ToString();
     }
 
+    */
     public void hitPlayer(int damage){
         print("player hit");
         health -= damage;
     }
 
+    //ADDED UIAMMO
+    void UpdateAmmoUI()
+    {
+        Gun_Pistol gunScript = playerGun.GetComponent<Gun_Pistol>();
 
+        if (gunScript == null)
+        {
+            return;
+        }
 
-
+        if (gunEquipped == 'p')
+        {
+            screen.transform.Find("Ammo").transform.Find("AmmoCounter").GetComponent<Text>().text = gunScript.GetPistolAmmo().ToString();
+        }
+        else if (gunEquipped == 's')
+        {
+            screen.transform.Find("Ammo").transform.Find("AmmoCounter").GetComponent<Text>().text = gunScript.GetShotgunAmmo().ToString();
+        }
+        else if (gunEquipped == 'm')
+        {
+            screen.transform.Find("Ammo").transform.Find("AmmoCounter").GetComponent<Text>().text = gunScript.GetMachinegunAmmo().ToString();
+        }
+    }
 
 
 }

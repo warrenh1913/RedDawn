@@ -8,14 +8,13 @@ public class Ammo_Shotgun : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Player_Script ph = other.GetComponent<Player_Script>();
+            Gun_Pistol gun = other.GetComponentInChildren<Gun_Pistol>();
 
-            if (ph != null)
+            if (gun != null)
             {
-                ph.addsammo(shotgunAmount);
+                gun.AddShotgunAmmo(shotgunAmount);
+                Destroy(gameObject);
             }
-
-            Destroy(gameObject);
         }
     }
 }

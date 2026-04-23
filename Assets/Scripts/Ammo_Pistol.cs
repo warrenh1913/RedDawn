@@ -2,20 +2,19 @@ using UnityEngine;
 
 public class Ammo_Pistol : MonoBehaviour
 {
-    public int pistolAmount = 10;
+    public int pistolAmount = 12;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            Player_Script ph = other.GetComponent<Player_Script>();
+            Gun_Pistol gun = other.GetComponentInChildren<Gun_Pistol>();
 
-            if (ph != null)
+            if (gun != null)
             {
-                ph.addpammo(pistolAmount);
+                gun.AddPistolAmmo(pistolAmount);
+                Destroy(gameObject);
             }
-
-            Destroy(gameObject);
         }
     }
 }
