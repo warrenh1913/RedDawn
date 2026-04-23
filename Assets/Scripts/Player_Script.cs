@@ -8,7 +8,7 @@ public class Player_Script : MonoBehaviour
     float cooldown = 0.5f;
     
     int health = 100;
-    int ammo = 100;
+    
     
     private char gunEquipped = 'p';
 
@@ -58,9 +58,10 @@ public class Player_Script : MonoBehaviour
             currentWeapon = 3;
             UpdateWeapon();
         }
+        UpdateAmmoUI();
 
-    /* Pistol & Shotgun*/
-    if(Input.GetButtonDown("Fire1") && playerGun.GetComponent<Gun_Pistol>().checkAmmo(gunEquipped)) {
+        /* Pistol & Shotgun*/
+        if (Input.GetButtonDown("Fire1") && playerGun.GetComponent<Gun_Pistol>().checkAmmo(gunEquipped)) {
       if(gunEquipped == 'p'){
         playerGun.GetComponent<Gun_Pistol>().shootPistol();
     }
@@ -68,14 +69,14 @@ public class Player_Script : MonoBehaviour
         playerGun.GetComponent<Gun_Pistol>().shootShotgun();
     }
     
-    screen.transform.Find("Ammo").transform.Find("AmmoCounter").GetComponent<Text>().text = ammo.ToString();
+    //screen.transform.Find("Ammo").transform.Find("AmmoCounter").GetComponent<Text>().text = ammo.ToString();
 }
     
     /* Machine Gun */
     if(Input.GetButton("Fire1") && gunEquipped == 'm' && playerGun.GetComponent<Gun_Pistol>().checkAmmo(gunEquipped)) {
         playerGun.GetComponent<Gun_Pistol>().shootMachinegun(true);
     
-        screen.transform.Find("Ammo").transform.Find("AmmoCounter").GetComponent<Text>().text = ammo.ToString();
+        //screen.transform.Find("Ammo").transform.Find("AmmoCounter").GetComponent<Text>().text = ammo.ToString();
     }
         //print("player X: " + transform.position.x + " Player Y: " + transform.position.y);
 
@@ -97,7 +98,7 @@ public class Player_Script : MonoBehaviour
                 break;
         }
         UpdateWeaponUI();
-        UpdateAmmoUI();
+        
     }
 
     void UpdateWeaponUI()
@@ -141,7 +142,7 @@ public class Player_Script : MonoBehaviour
         {
             health = 100;
         }
-        screen.transform.Find("Health").transform.Find("HealthCounter").GetComponent<Text>().text = health.ToString();
+        //screen.transform.Find("Health").transform.Find("HealthCounter").GetComponent<Text>().text = health.ToString();
     }
     /**
     public void addpammo(int num)
@@ -177,6 +178,7 @@ public class Player_Script : MonoBehaviour
         {
             return;
         }
+        print("hit");
 
         if (gunEquipped == 'p')
         {
@@ -190,7 +192,9 @@ public class Player_Script : MonoBehaviour
         {
             screen.transform.Find("Ammo").transform.Find("AmmoCounter").GetComponent<Text>().text = gunScript.GetMachinegunAmmo().ToString();
         }
+        screen.transform.Find("Health").transform.Find("HealthCounter").GetComponent<Text>().text = health.ToString();
     }
+    
 
 
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Ammo_Shotgun : MonoBehaviour
 {
-    public int shotgunAmount = 4;
+    public int shotgunAmount = 5;
 
     private void OnTriggerEnter(Collider other)
     {

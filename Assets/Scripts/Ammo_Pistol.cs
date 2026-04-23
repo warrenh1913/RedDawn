@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Ammo_Pistol : MonoBehaviour
 {
-    public int pistolAmount = 12;
+    public int pistolAmount = 15;
 
     private void OnTriggerEnter(Collider other)
     {

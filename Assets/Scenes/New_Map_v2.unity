@@ -35206,7 +35206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fd640ebbc3e90445bb0426d4ca91efe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pistolAmount: 10
+  pistolAmount: 15
 --- !u!1 &1702280847
 GameObject:
   m_ObjectHideFlags: 0
@@ -45929,10 +45929,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1999884237}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fd640ebbc3e90445bb0426d4ca91efe, type: 3}
+  m_Script: {fileID: 11500000, guid: edcda07bf9af6cd439b34973e2afdacd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pistolAmount: 12
+  shotgunAmount: 5
 --- !u!135 &1999884239
 SphereCollider:
   m_ObjectHideFlags: 0
