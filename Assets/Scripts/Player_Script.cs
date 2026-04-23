@@ -16,11 +16,15 @@ public class Player_Script : MonoBehaviour
     public GameObject playerGun;
     public Gun_Model gunModel;
 
+    public AudioSource playerHit;
+
     public Gun_Visuals gunVisuals;
     
     public Text weaponText;
 
     private bool playPlayerHit = false;
+
+    private int machinegunCount = 0;
 
      private int currentWeapon = 1;
     // Start is called before the first frame update
