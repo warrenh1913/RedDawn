@@ -17,6 +17,8 @@ public class Enemy_Soviet_Thrower : MonoBehaviour{
 
     private float timePassed = 0f;
 
+    private int health = 100;
+
     
     void Start()
     {
@@ -120,5 +122,12 @@ public class Enemy_Soviet_Thrower : MonoBehaviour{
         }
     }
 
+    void takeDamage(int damage){
+        health -= damage;
+    }
+
+    int getHealth(){
+        return health;
+    }
 
 }

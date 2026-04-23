@@ -10,6 +10,8 @@ public class Enemy_Soviet_Normal : MonoBehaviour
     public GameObject player;
 
     private int hitCooldown = 100;
+
+    private int health = 125;
      
     void Start()
     {
@@ -46,6 +48,7 @@ public class Enemy_Soviet_Normal : MonoBehaviour
         transform.rotation = Quaternion.Euler(tempVec);
 
         hitPlayer();
+        //playNoise();
         //print(transform.rotation);
         //transform.localEulerAngles = new Vector3(0f,0f,90f);
         
@@ -86,5 +89,15 @@ public class Enemy_Soviet_Normal : MonoBehaviour
     // void OnTriggerEnter(Collider other){
     //     print("hit");
     //     Destroy(gameObject);
+    // }
+    //private float timePassed = 0f;
+    // void playNoise()
+    // {
+    //     timePassed += Time.deltaTime;
+    //     if(timePassed >= 1f)
+    //     {
+    //         deathSound.Play();
+    //         timePassed = 0f;
+    //     }
     // }
 }

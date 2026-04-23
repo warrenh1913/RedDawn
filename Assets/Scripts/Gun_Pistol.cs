@@ -20,6 +20,8 @@ public class Gun_Pistol : MonoBehaviour
     private float pistolCooldown = 0.5f;
     private float shotgunCooldown = 0.7f;
     private float machinegunCooldown = 0.2f;
+
+    //private LayerMask enemyMask();
     void Start()
     {
         // if(player == null){
@@ -67,8 +69,12 @@ public class Gun_Pistol : MonoBehaviour
         Physics.Raycast(transform.position, transform.forward * 50, out hit, 50f);
         Debug.DrawRay(transform.position, transform.forward * 50, Color.green, 10f);
         
-        if(hit.collider != null && hit.collider.tag == "enemy"){
-            Destroy(hit.collider.gameObject);
+        if(hit.collider != null){
+            if(hit.collider.tag == "enemy"){
+            hit.collider.gameObject.GetComponent<Hit_Enemy>().hitEnemy(25);
+            }else if(hit.collider.tag == "projectile"){
+                Destroy(hit.collider.gameObject);
+            }
         }
         
         //pistolAmmo--;
@@ -91,8 +97,12 @@ public class Gun_Pistol : MonoBehaviour
             Physics.Raycast(transform.position, findRot, out hit, 10f);
             Debug.DrawRay(transform.position, findRot * 10f, Color.green, 10f);
             
-            if(hit.collider != null && hit.collider.tag == "enemy"){
+            if(hit.collider != null){
+                if(hit.collider.tag == "enemy"){
+                hit.collider.gameObject.GetComponent<Hit_Enemy>().hitEnemy(7);
+                }else if(hit.collider.tag == "projectile"){
                 Destroy(hit.collider.gameObject);
+            }
             }
         }
         
@@ -124,8 +134,12 @@ public class Gun_Pistol : MonoBehaviour
             Debug.DrawRay(transform.position, transform.forward * 50, Color.green, 10f);
         }
 
-        if(hit.collider != null && hit.collider.tag == "enemy"){
-            Destroy(hit.collider.gameObject);
+        if(hit.collider != null){
+            if(hit.collider.tag == "enemy"){
+            hit.collider.gameObject.GetComponent<Hit_Enemy>().hitEnemy(20);
+            }else if(hit.collider.tag == "projectile"){
+                Destroy(hit.collider.gameObject);
+            }
         }
         
         //machinegunAmmo--;

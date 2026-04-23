@@ -20,7 +20,7 @@ public class Player_Script : MonoBehaviour
     
     public Text weaponText;
 
-    private int machinegunCount = 0;
+    private bool playPlayerHit = false;
 
      private int currentWeapon = 1;
     // Start is called before the first frame update
@@ -34,6 +34,7 @@ public class Player_Script : MonoBehaviour
         {
             print("Player Script missing UI");
         }
+        //playerHit.clip.preloadAudioData = true;
 
         UpdateWeapon();
     }
@@ -43,6 +44,13 @@ public class Player_Script : MonoBehaviour
 
     /* Switch weapons */
     void Update(){
+
+        if(playPlayerHit){
+            playerHit.PlayOneShot(playerHit.clip);
+            
+            playPlayerHit = false;
+        }
+
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             currentWeapon = 1;
@@ -162,6 +170,7 @@ public class Player_Script : MonoBehaviour
     }
 
     public void hitPlayer(int damage){
+        playPlayerHit = true;
         print("player hit");
         health -= damage;
     }

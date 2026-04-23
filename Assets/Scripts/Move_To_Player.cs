@@ -194,5 +194,9 @@ public class Move_To_Player : MonoBehaviour
         }
     }
 
+    public void enemyDied(){
+        Destroy(gameObject);
+    }
+
     
 }
