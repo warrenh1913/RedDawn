@@ -24143,7 +24143,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1164761183}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.8, z: 0}
+  m_LocalPosition: {x: 0, y: -0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1092221735}
@@ -24162,6 +24162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunVisuals: {fileID: 1454844657}
+  bloodSplat: {fileID: 1734280431157881946, guid: c1511be3ea07dc24e83289492d13e52b, type: 3}
 --- !u!114 &1164761186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30453,6 +30454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunVisuals: {fileID: 1164761186}
+  bloodSplat: {fileID: 0}
 --- !u!1 &1456415484
 GameObject:
   m_ObjectHideFlags: 0

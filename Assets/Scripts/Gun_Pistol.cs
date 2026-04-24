@@ -10,6 +10,8 @@ public class Gun_Pistol : MonoBehaviour
     public Gun_Visuals gunVisuals;
     private Transform gunPos;
 
+    public GameObject bloodSplat;
+
     float timePassed = 0f;
     
 
@@ -72,6 +74,9 @@ public class Gun_Pistol : MonoBehaviour
         if(hit.collider != null){
             if(hit.collider.tag == "enemy"){
             hit.collider.gameObject.GetComponent<Hit_Enemy>().hitEnemy(25);
+            Vector3 temp = (transform.position - hit.collider.transform.position).normalized;
+
+            Instantiate(bloodSplat,hit.point,Quaternion.LookRotation(temp));
             }else if(hit.collider.tag == "projectile"){
                 Destroy(hit.collider.gameObject);
             }

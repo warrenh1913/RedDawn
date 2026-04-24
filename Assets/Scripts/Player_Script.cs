@@ -16,6 +16,7 @@ public class Player_Script : MonoBehaviour
     public GameObject playerGun;
     public Gun_Model gunModel;
 
+
     public AudioSource playerHit;
 
     public Gun_Visuals gunVisuals;
@@ -25,6 +26,8 @@ public class Player_Script : MonoBehaviour
     private bool playPlayerHit = false;
 
     private int machinegunCount = 0;
+
+    private Animator canvasAnimator;
 
      private int currentWeapon = 1;
     // Start is called before the first frame update
@@ -38,6 +41,9 @@ public class Player_Script : MonoBehaviour
         {
             print("Player Script missing UI");
         }
+
+        canvasAnimator = screen.GetComponent<Animator>();
+        print("canvas anim is " + canvasAnimator == null);
         //playerHit.clip.preloadAudioData = true;
 
         UpdateWeapon();
@@ -153,6 +159,7 @@ public class Player_Script : MonoBehaviour
     {
         health += num;
         screen.transform.Find("Health").transform.Find("HealthCounter").GetComponent<Text>().text = health.ToString();
+        canvasAnimator.SetBool("PlayerHeals",true);
     }
 
     public void addpammo(int num)
@@ -175,7 +182,7 @@ public class Player_Script : MonoBehaviour
 
     public void hitPlayer(int damage){
         playPlayerHit = true;
-        print("player hit");
+        canvasAnimator.SetBool("EnemyHits",true);
         health -= damage;
     }
 
