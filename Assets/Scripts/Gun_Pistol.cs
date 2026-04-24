@@ -72,7 +72,7 @@ public class Gun_Pistol : MonoBehaviour
             Destroy(hit.collider.gameObject);
         }
         
-        //pistolAmmo--;
+        pistolAmmo--;
         timePassed = 0f;
     }
 

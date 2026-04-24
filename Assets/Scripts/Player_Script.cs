@@ -15,7 +15,7 @@ public class Player_Script : MonoBehaviour
     public GameObject screen;
     public GameObject playerGun;
     public Gun_Model gunModel;
-
+    public AudioSource playerHit;
     public Gun_Visuals gunVisuals;
     
     public Text weaponText;
@@ -43,6 +43,7 @@ public class Player_Script : MonoBehaviour
 
     /* Switch weapons */
     void Update(){
+
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             currentWeapon = 1;
@@ -165,6 +166,7 @@ public class Player_Script : MonoBehaviour
 
     */
     public void hitPlayer(int damage){
+        playerHit.PlayOneShot(playerHit.clip);
         print("player hit");
         health -= damage;
     }

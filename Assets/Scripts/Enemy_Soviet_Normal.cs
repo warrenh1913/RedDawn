@@ -5,18 +5,15 @@ using UnityEngine;
 public class Enemy_Soviet_Normal : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject camera;
-
+    public AudioSource hitSound;
+    public AudioSource deathSound;
     public GameObject player;
 
     private int hitCooldown = 100;
      
     void Start()
     {
-        if(camera == null){
-            print("Enemy_SovietNormal Script is missing camera object reference ");
-        }
-        
+
         transform.parent.gameObject.transform.rotation = new Quaternion(0f,0f,0f,0f);
 
     }
@@ -48,6 +45,7 @@ public class Enemy_Soviet_Normal : MonoBehaviour
         transform.rotation = Quaternion.Euler(tempVec);
 
         hitPlayer();
+        playNoise();
         //print(transform.rotation);
         //transform.localEulerAngles = new Vector3(0f,0f,90f);
         
@@ -89,4 +87,14 @@ public class Enemy_Soviet_Normal : MonoBehaviour
     //     print("hit");
     //     Destroy(gameObject);
     // }
+    private float timePassed = 0f;
+    void playNoise()
+    {
+        timePassed += Time.deltaTime;
+        if(timePassed >= 1f)
+        {
+            deathSound.Play();
+            timePassed = 0f;
+        }
+    }
 }
