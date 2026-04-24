@@ -10,6 +10,8 @@ public class Enemy_Soviet_Normal : MonoBehaviour
     public GameObject player;
 
     private int hitCooldown = 100;
+
+    private int health = 125;
      
     void Start()
     {
@@ -22,8 +24,7 @@ public class Enemy_Soviet_Normal : MonoBehaviour
     void Update()
     {
         
-        // transform.Rotate(new Vector3(camera.transform.rotation.y * 360,0f,0f));
-        //transform.LookAt(camera.transform,Vector3.left);
+        
         
         //print(transform.rotation);
         // print("player coords : " + player.transform.position);
@@ -45,13 +46,13 @@ public class Enemy_Soviet_Normal : MonoBehaviour
         transform.rotation = Quaternion.Euler(tempVec);
 
         hitPlayer();
-        playNoise();
+        //playNoise();
         //print(transform.rotation);
         //transform.localEulerAngles = new Vector3(0f,0f,90f);
         
         //transform.localEulerAngles = new Vector3(0f,rotation.z * 360 - 90,90f);
         
-        //transform.localEulerAngles = new Vector3(0f,camera.transform.eulerAngles.y,0f);
+        
         //transform.Rotate(new Vector3(Time.deltaTime * 10,0f,0f));
         // can see player
         
@@ -87,14 +88,14 @@ public class Enemy_Soviet_Normal : MonoBehaviour
     //     print("hit");
     //     Destroy(gameObject);
     // }
-    private float timePassed = 0f;
-    void playNoise()
-    {
-        timePassed += Time.deltaTime;
-        if(timePassed >= 1f)
-        {
-            deathSound.Play();
-            timePassed = 0f;
-        }
-    }
+    //private float timePassed = 0f;
+    // void playNoise()
+    // {
+    //     timePassed += Time.deltaTime;
+    //     if(timePassed >= 1f)
+    //     {
+    //         deathSound.Play();
+    //         timePassed = 0f;
+    //     }
+    // }
 }

@@ -11,8 +11,10 @@ public class Gun_Pistol : MonoBehaviour
     public Gun_Visuals gunVisuals;
     private Transform gunPos;
 
+    public GameObject bloodSplat;
+
     float timePassed = 0f;
-    private int repeatFire = 0;
+    
 
     int pistolAmmo = 15;
     int shotgunAmmo = 5;
@@ -21,6 +23,8 @@ public class Gun_Pistol : MonoBehaviour
     private float pistolCooldown = 0.5f;
     private float shotgunCooldown = 0.7f;
     private float machinegunCooldown = 0.2f;
+
+    //private LayerMask enemyMask();
     void Start()
     {
         // if(player == null){
@@ -68,8 +72,15 @@ public class Gun_Pistol : MonoBehaviour
         Physics.Raycast(transform.position, transform.forward * 50, out hit, 50f);
         Debug.DrawRay(transform.position, transform.forward * 50, Color.green, 10f);
         
-        if(hit.collider != null && hit.collider.tag == "enemy"){
-            Destroy(hit.collider.gameObject);
+        if(hit.collider != null){
+            if(hit.collider.tag == "enemy"){
+            hit.collider.gameObject.GetComponent<Hit_Enemy>().hitEnemy(25);
+            Vector3 temp = (transform.position - hit.collider.transform.position).normalized;
+
+            Instantiate(bloodSplat,hit.point,Quaternion.LookRotation(temp));
+            }else if(hit.collider.tag == "projectile"){
+                Destroy(hit.collider.gameObject);
+            }
         }
         
         pistolAmmo--;
@@ -92,8 +103,12 @@ public class Gun_Pistol : MonoBehaviour
             Physics.Raycast(transform.position, findRot, out hit, 10f);
             Debug.DrawRay(transform.position, findRot * 10f, Color.green, 10f);
             
-            if(hit.collider != null && hit.collider.tag == "enemy"){
+            if(hit.collider != null){
+                if(hit.collider.tag == "enemy"){
+                hit.collider.gameObject.GetComponent<Hit_Enemy>().hitEnemy(7);
+                }else if(hit.collider.tag == "projectile"){
                 Destroy(hit.collider.gameObject);
+            }
             }
         }
         
@@ -101,23 +116,18 @@ public class Gun_Pistol : MonoBehaviour
         timePassed = 0f;
     }
 
-   public void shootMachinegun(bool repeat){
+   public void shootMachinegun(int repeat){
         if(machinegunCooldown > timePassed){
             return;
         }
 
         if(gunVisuals != null) gunVisuals.PlayMachinegunEffects();
         
-        if(repeat){
-            repeatFire++;
-        }else{
-            repeatFire = 0;
-        }
 
         RaycastHit hit;
         
-        if(repeatFire > 4){
-            float temp1 = Mathf.Max(-.15f,-repeatFire/100f); float temp2 = Mathf.Min(.15f,repeatFire/100f);
+        if(repeat > 4){
+            float temp1 = Mathf.Max(-.115f,-repeat/100f); float temp2 = Mathf.Min(.115f,repeat/100f);
             Vector3 recoil = transform.right * Random.Range(temp1,temp2);
 
             
@@ -130,8 +140,12 @@ public class Gun_Pistol : MonoBehaviour
             Debug.DrawRay(transform.position, transform.forward * 50, Color.green, 10f);
         }
 
-        if(hit.collider != null && hit.collider.tag == "enemy"){
-            Destroy(hit.collider.gameObject);
+        if(hit.collider != null){
+            if(hit.collider.tag == "enemy"){
+            hit.collider.gameObject.GetComponent<Hit_Enemy>().hitEnemy(20);
+            }else if(hit.collider.tag == "projectile"){
+                Destroy(hit.collider.gameObject);
+            }
         }
         
         //machinegunAmmo--;
@@ -154,6 +168,8 @@ public class Gun_Pistol : MonoBehaviour
     int pistolAmmo = 15;
     int shotgunAmmo = 5;
     int machinegunAmmo = 25;
+
+    public GameObject bloodSplat;
 
     private float pistolCooldown = 0.5f;
     private float shotgunCooldown = 0.7f;
@@ -246,9 +262,15 @@ public class Gun_Pistol : MonoBehaviour
         Physics.Raycast(transform.position, transform.forward * 50, out hit, 50f);
         Debug.DrawRay(transform.position, transform.forward * 50, Color.green, 10f);
 
-        if (hit.collider != null && hit.collider.tag == "enemy")
-        {
-            Destroy(hit.collider.gameObject);
+        if(hit.collider != null){
+            if(hit.collider.tag == "enemy"){
+            hit.collider.gameObject.GetComponent<Hit_Enemy>().hitEnemy(25);
+            Vector3 temp = (transform.position - hit.collider.transform.position).normalized;
+
+            Instantiate(bloodSplat,hit.point,Quaternion.LookRotation(temp));
+            }else if(hit.collider.tag == "projectile"){
+                Destroy(hit.collider.gameObject);
+            }
         }
 
         pistolAmmo--; // CHANGED: this was commented out before
@@ -280,17 +302,23 @@ public class Gun_Pistol : MonoBehaviour
             Physics.Raycast(transform.position, findRot, out hit, 10f);
             Debug.DrawRay(transform.position, findRot * 10f, Color.green, 10f);
 
-            if (hit.collider != null && hit.collider.tag == "enemy")
-            {
+            if(hit.collider != null){
+            if(hit.collider.tag == "enemy"){
+            hit.collider.gameObject.GetComponent<Hit_Enemy>().hitEnemy(10);
+            Vector3 temp = (transform.position - hit.collider.transform.position).normalized;
+
+            Instantiate(bloodSplat,hit.point,Quaternion.LookRotation(temp));
+            }else if(hit.collider.tag == "projectile"){
                 Destroy(hit.collider.gameObject);
             }
+        }
         }
 
         shotgunAmmo--; // CHANGED: this was commented out before
         timePassed = 0f;
     }
 
-    public void shootMachinegun(bool repeat)
+    public void shootMachinegun(int repeatFire)
     {
         if (machinegunCooldown > timePassed)
         {
@@ -305,21 +333,14 @@ public class Gun_Pistol : MonoBehaviour
 
         if (gunVisuals != null) gunVisuals.PlayMachinegunEffects();
 
-        if (repeat)
-        {
-            repeatFire++;
-        }
-        else
-        {
-            repeatFire = 0;
-        }
+        
 
         RaycastHit hit;
 
         if (repeatFire > 4)
         {
-            float temp1 = Mathf.Max(-.15f, -repeatFire / 100f);
-            float temp2 = Mathf.Min(.15f, repeatFire / 100f);
+            float temp1 = Mathf.Max(-.10f, -repeatFire / 100f);
+            float temp2 = Mathf.Min(.10f, repeatFire / 100f);
             Vector3 recoil = transform.right * Random.Range(temp1, temp2);
 
             Vector3 vecX = transform.forward + recoil;
@@ -333,9 +354,15 @@ public class Gun_Pistol : MonoBehaviour
             Debug.DrawRay(transform.position, transform.forward * 50, Color.green, 10f);
         }
 
-        if (hit.collider != null && hit.collider.tag == "enemy")
-        {
-            Destroy(hit.collider.gameObject);
+        if(hit.collider != null){
+            if(hit.collider.tag == "enemy"){
+            hit.collider.gameObject.GetComponent<Hit_Enemy>().hitEnemy(15);
+            Vector3 temp = (transform.position - hit.collider.transform.position).normalized;
+
+            Instantiate(bloodSplat,hit.point,Quaternion.LookRotation(temp));
+            }else if(hit.collider.tag == "projectile"){
+                Destroy(hit.collider.gameObject);
+            }
         }
 
         machinegunAmmo--; // CHANGED: this was commented out before

@@ -15,10 +15,19 @@ public class Player_Script : MonoBehaviour
     public GameObject screen;
     public GameObject playerGun;
     public Gun_Model gunModel;
+
+
     public AudioSource playerHit;
+
     public Gun_Visuals gunVisuals;
     
     public Text weaponText;
+
+    private bool playPlayerHit = false;
+
+    private int machinegunCount = 0;
+
+    private Animator canvasAnimator;
 
      private int currentWeapon = 1;
     // Start is called before the first frame update
@@ -33,6 +42,10 @@ public class Player_Script : MonoBehaviour
             print("Player Script missing UI");
         }
 
+        canvasAnimator = screen.GetComponent<Animator>();
+//        print("canvas anim is " + canvasAnimator == null);
+        //playerHit.clip.preloadAudioData = true;
+
         UpdateWeapon();
 
       
@@ -43,6 +56,12 @@ public class Player_Script : MonoBehaviour
 
     /* Switch weapons */
     void Update(){
+
+        if(playPlayerHit){
+            playerHit.PlayOneShot(playerHit.clip);
+            
+            playPlayerHit = false;
+        }
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -72,10 +91,20 @@ public class Player_Script : MonoBehaviour
     
     //screen.transform.Find("Ammo").transform.Find("AmmoCounter").GetComponent<Text>().text = ammo.ToString();
 }
-    
+
+
+    if(!Input.GetButton("Fire1")){
+        machinegunCount = 0;
+    } 
     /* Machine Gun */
     if(Input.GetButton("Fire1") && gunEquipped == 'm' && playerGun.GetComponent<Gun_Pistol>().checkAmmo(gunEquipped)) {
-        playerGun.GetComponent<Gun_Pistol>().shootMachinegun(true);
+
+        
+        
+        playerGun.GetComponent<Gun_Pistol>().shootMachinegun(machinegunCount);
+        
+        machinegunCount++;
+
     
         //screen.transform.Find("Ammo").transform.Find("AmmoCounter").GetComponent<Text>().text = ammo.ToString();
     }
@@ -139,6 +168,8 @@ public class Player_Script : MonoBehaviour
     public void addHealth(int num)
     {
         health += num;
+        screen.transform.Find("Health").transform.Find("HealthCounter").GetComponent<Text>().text = health.ToString();
+        canvasAnimator.SetBool("PlayerHeals",true);
         if (health > 100)
         {
             health = 100;
@@ -166,7 +197,8 @@ public class Player_Script : MonoBehaviour
 
     */
     public void hitPlayer(int damage){
-        playerHit.PlayOneShot(playerHit.clip);
+        playPlayerHit = true;
+        canvasAnimator.SetBool("EnemyHits",true);
         print("player hit");
         health -= damage;
     }

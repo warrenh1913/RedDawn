@@ -1,5 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
+
+
 //using System.Numerics;
 
 using UnityEngine;
@@ -18,6 +19,8 @@ public class Move_To_Player : MonoBehaviour
     public int moveToRange = 0;
 
     public int sides = 1;
+
+    private Vector3 lastPlayerPosition;
 
     
     
@@ -146,10 +149,34 @@ public class Move_To_Player : MonoBehaviour
                 print("no objects hit");
                 transform.Translate(panel.transform.forward * Time.deltaTime * realSpeed,Space.Self);
             }
+            lastPlayerPosition = player.transform.position;
             
             
             }else{
-                //print("cannot see player");
+                if(lastPlayerPosition != new Vector3(0,0,0)){
+
+                    Vector3 toPlayer = (lastPlayerPosition - transform.position).normalized;
+                    toPlayer.y = 0;
+
+
+                    if(objectLeft && objectRight){
+                    print("both objects hit");
+                    transform.Translate(toPlayer * Time.deltaTime * realSpeed,Space.Self);
+                    }else if(objectLeft){
+                    print("left object hit");
+                    transform.Translate(((toPlayer + new Vector3(-toPlayer.x,0,0)) + (toPlayer * .2f)) * Time.deltaTime * realSpeed,Space.Self);
+                    }else if(objectRight){
+                    print("right object hit");
+                    transform.Translate(((toPlayer + new Vector3(-toPlayer.x,0,0)) + (-toPlayer * .2f)) * Time.deltaTime * realSpeed,Space.Self);
+                    }else{
+                    print("no objects hit");
+                    transform.Translate(toPlayer * Time.deltaTime * realSpeed,Space.Self);
+                    }
+
+                    if(Vector3.Distance(lastPlayerPosition,transform.position) < 2f){
+                    lastPlayerPosition = new Vector3(0,0,0);
+                    }
+                }
             }
 
             
@@ -196,7 +223,7 @@ public class Move_To_Player : MonoBehaviour
 
         Physics.Raycast(transform.position,temp * 50 ,out hit, 50,viewPlayerMask);
         
-        Debug.DrawRay(transform.position, temp * 50 * -1, Color.green, 50);
+        //Debug.DrawRay(transform.position, temp * 50, Color.green, 50);
 
         
         if(hit.collider == null || hit.distance < moveToRange){
@@ -204,6 +231,10 @@ public class Move_To_Player : MonoBehaviour
         }else{
             return hit.collider.tag == "Player";
         }
+    }
+
+    public void enemyDied(){
+        Destroy(gameObject);
     }
 
     
