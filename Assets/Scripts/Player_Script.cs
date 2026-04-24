@@ -101,7 +101,7 @@ public class Player_Script : MonoBehaviour
 
         
         
-        playerGun.GetComponent<Gun_Pistol>().shootMachinegun(true);
+        playerGun.GetComponent<Gun_Pistol>().shootMachinegun(machinegunCount);
         
         machinegunCount++;
 

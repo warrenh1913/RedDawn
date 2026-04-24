@@ -223,7 +223,7 @@ public class Move_To_Player : MonoBehaviour
 
         Physics.Raycast(transform.position,temp * 50 ,out hit, 50,viewPlayerMask);
         
-        Debug.DrawRay(transform.position, temp * 50 * -1, Color.green, 50);
+        //Debug.DrawRay(transform.position, temp * 50, Color.green, 50);
 
         
         if(hit.collider == null || hit.distance < moveToRange){

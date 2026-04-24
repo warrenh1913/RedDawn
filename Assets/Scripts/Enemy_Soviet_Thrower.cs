@@ -36,8 +36,7 @@ public class Enemy_Soviet_Thrower : MonoBehaviour{
         
         Vector3 tempVec = Quaternion.LookRotation(rotation,Vector3.up).eulerAngles;
 
-        tempVec.z = 90f;
-        tempVec.y += 90f;
+        
 
         currentRotation = Quaternion.Euler(tempVec);
         transform.rotation = Quaternion.Euler(tempVec);
