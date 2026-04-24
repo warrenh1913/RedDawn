@@ -178,7 +178,7 @@ public class Player_Script : MonoBehaviour
         {
             return;
         }
-        print("hit");
+        
 
         if (gunEquipped == 'p')
         {
