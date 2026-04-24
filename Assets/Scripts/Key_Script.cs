@@ -1,16 +1,16 @@
 using UnityEngine;
 
-public class KeyPickup : MonoBehaviour
+public class Key_Script : MonoBehaviour
 {
-    public GameObject lockedDoor;
+    public GameObject LockedDoor1;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<Player_Script>() != null)
         {
-            if (lockedDoor != null)
+            if (LockedDoor1 != null)
             {
-                Destroy(lockedDoor);
+                Destroy(LockedDoor1);
             }
 
             Destroy(gameObject);
