@@ -43,7 +43,7 @@ public class Player_Script : MonoBehaviour
         }
 
         canvasAnimator = screen.GetComponent<Animator>();
-        print("canvas anim is " + canvasAnimator == null);
+//        print("canvas anim is " + canvasAnimator == null);
         //playerHit.clip.preloadAudioData = true;
 
         UpdateWeapon();
