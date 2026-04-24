@@ -32,6 +32,11 @@ public class Move_To_Player : MonoBehaviour
     public GameObject panel;
 
     private float width;
+
+    private LayerMask wallMask;
+
+    private LayerMask viewPlayerMask;
+
     void Start(){
         if(player == null){
             print("Move_To_Player Script is missing player reference");
@@ -48,12 +53,20 @@ public class Move_To_Player : MonoBehaviour
 
         panelScript = panel.GetComponent<Enemy_Soviet_Normal>();
 
-        width = panel.GetComponent<MeshFilter>().sharedMesh.bounds.size.z;
-        width *= panel.transform.localScale.z;
+        width = panel.GetComponent<BoxCollider>().bounds.size.z;
+        //width *= panel.transform.localScale.x;
+
+
+        //print(panel.GetComponent<BoxCollider>().bounds.size);
+        //print(width);
         
         if(width == null){
             print("width is null");
         }
+
+         
+        wallMask = LayerMask.GetMask("Wall");
+        viewPlayerMask = LayerMask.GetMask("Wall","Player");
         
         
     }
@@ -61,14 +74,14 @@ public class Move_To_Player : MonoBehaviour
     // Update is called once per frame
     void Update(){
 
-        LayerMask mask = LayerMask.GetMask("Wall");
+        
         //right
-        Physics.Raycast(panel.transform.position + panel.transform.forward * width/2,panel.transform.forward * sides,out checkRight,1f,mask);
-        Debug.DrawRay(panel.transform.position + panel.transform.forward * width/2,panel.transform.forward * sides, Color.green, 25);
+        Physics.Raycast(panel.transform.position + panel.transform.right * width/2,panel.transform.right * sides,out checkRight,1f,wallMask);
+        Debug.DrawRay(panel.transform.position + panel.transform.right * width/2,panel.transform.right * sides, Color.green, 25);
 
         //left
-        Physics.Raycast(panel.transform.position - panel.transform.forward * width/2,-panel.transform.forward * sides,out checkLeft,1f,mask);
-        Debug.DrawRay(panel.transform.position - panel.transform.forward * width/2,panel.transform.forward * -sides, Color.green, 25);
+        Physics.Raycast(panel.transform.position - panel.transform.right * width/2,-panel.transform.right * sides,out checkLeft,1f,wallMask);
+        Debug.DrawRay(panel.transform.position - panel.transform.right * width/2,panel.transform.right * -sides, Color.green, 25);
 
         if(checkLeft.collider != null){
             objectLeft = true;
@@ -98,41 +111,40 @@ public class Move_To_Player : MonoBehaviour
 
         //print("Player X: " + playerTransform.position.x + " Enemy X: " + transform.position.x);
 
-        float xDist = Mathf.Abs(transform.position.x) - Mathf.Abs(playerTransform.position.x);
-        float zDist = transform.position.z - playerTransform.position.z;
+        
 
 
 
         //float xPercent = 
         
-        if(playerTransform.position.x > transform.position.x){
-                moveX = Time.fixedDeltaTime * realSpeed;
-            }else{
-                moveX = Time.fixedDeltaTime * -realSpeed;
-            }
-
-        
-            if(playerTransform.position.z > transform.position.z){
-            moveZ = Time.fixedDeltaTime * realSpeed;
-            }else{
-                moveZ = Time.fixedDeltaTime * -realSpeed;
-            }
+//         if(playerTransform.position.x > transform.position.x){
+//                 moveX = Time.fixedDeltaTime * realSpeed;
+//             }else{
+//                 moveX = Time.fixedDeltaTime * -realSpeed;
+//             }
+// 
+//         
+//             if(playerTransform.position.z > transform.position.z){
+//             moveZ = Time.fixedDeltaTime * realSpeed;
+//             }else{
+//                 moveZ = Time.fixedDeltaTime * -realSpeed;
+//             }
 
             //print(panel.transform.up);
 
             
             if(objectLeft && objectRight){
                 print("both objects hit");
-                transform.Translate(panel.transform.up * Time.deltaTime * realSpeed,Space.Self);
+                transform.Translate(panel.transform.forward * Time.deltaTime * realSpeed,Space.Self);
             }else if(objectLeft){
                 print("left object hit");
-                transform.Translate(((panel.transform.up + new Vector3(-panel.transform.up.x,0,0)) + (panel.transform.forward * .2f)) * Time.deltaTime * realSpeed,Space.Self);
+                transform.Translate(((panel.transform.forward + new Vector3(-panel.transform.forward.x,0,0)) + (panel.transform.right * .4f)) * Time.deltaTime * realSpeed,Space.Self);
             }else if(objectRight){
                 print("right object hit");
-                transform.Translate(((panel.transform.up + new Vector3(-panel.transform.up.x,0,0)) + (-panel.transform.forward * .2f)) * Time.deltaTime * realSpeed,Space.Self);
+                transform.Translate(((panel.transform.forward + new Vector3(-panel.transform.forward.x,0,0)) + (-panel.transform.right * .4f)) * Time.deltaTime * realSpeed,Space.Self);
             }else{
                 print("no objects hit");
-                transform.Translate(panel.transform.up * Time.deltaTime * realSpeed,Space.Self);
+                transform.Translate(panel.transform.forward * Time.deltaTime * realSpeed,Space.Self);
             }
             
             
@@ -182,9 +194,9 @@ public class Move_To_Player : MonoBehaviour
 
         Vector3 temp = player.transform.position - transform.position;
 
-        Physics.Raycast(transform.position,temp * 50 ,out hit, 50);
+        Physics.Raycast(transform.position,temp * 50 ,out hit, 50,viewPlayerMask);
         
-        //Debug.DrawRay(transform.position, temp * 50 * -1, Color.green, 50);
+        Debug.DrawRay(transform.position, temp * 50 * -1, Color.green, 50);
 
         
         if(hit.collider == null || hit.distance < moveToRange){

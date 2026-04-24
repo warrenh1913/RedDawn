@@ -35,7 +35,7 @@ namespace OldTreeStudio
 
 		public void PlaySFX ()
 		{
-			_audioSource.Play ();
+			//_audioSource.Play ();
 		}
 
 		#endregion

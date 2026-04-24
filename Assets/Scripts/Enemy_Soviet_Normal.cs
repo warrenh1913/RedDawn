@@ -30,15 +30,17 @@ public class Enemy_Soviet_Normal : MonoBehaviour
          
         //  rotation = new Vector3(0f,rotation.y,0f);
 
-        //Debug.DrawRay(transform.position,rotation * 20,Color.red,50);
+        
 
         Vector3 rotation = (player.transform.position - transform.position ).normalized;
-        rotation.y = 0;
+        //rotation.y = 0;
         
         Vector3 tempVec = Quaternion.LookRotation(rotation,Vector3.up).eulerAngles;
 
-        tempVec.z = 90f;
-        tempVec.y += 90f;
+        //Debug.DrawRay(transform.position,rotation * 20,Color.red,50);
+
+        // tempVec.z = 90f;
+        // tempVec.y += 90f;
 
         transform.rotation = Quaternion.Euler(tempVec);
 
@@ -72,7 +74,7 @@ public class Enemy_Soviet_Normal : MonoBehaviour
         }else{
             hitCooldown = 100;
         }
-        Debug.DrawRay(transform.position, (player.transform.position - transform.position).normalized * 2.5f, Color.black, 50);
+        Debug.DrawRay(transform.position, (player.transform.position - transform.position).normalized * 2.5f, Color.red, 50);
         return false;
 
     }
