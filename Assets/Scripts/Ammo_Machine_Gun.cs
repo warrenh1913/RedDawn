@@ -13,7 +13,9 @@ public class Ammo_Machine_Gun : MonoBehaviour
             if (gun != null)
             {
                 gun.AddMachinegunAmmo(machinegunAmount);
-                Destroy(gameObject);
+                //AudioSource temp = GetComponent<AudioSource>();
+                //temp.PlayOneShot(temp.clip);
+                Destroy(gameObject);//,temp.clip.length);
             }
         }
     }
