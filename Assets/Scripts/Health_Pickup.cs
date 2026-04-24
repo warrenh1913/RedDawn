@@ -10,12 +10,11 @@ public class Health_Pickup : MonoBehaviour
         {
             Player_Script ph = other.GetComponent<Player_Script>();
 
-            if (ph != null)
+            if (ph != null && !ph.HasFullHealth())
             {
                 ph.addHealth(healAmount);
+                Destroy(gameObject);
             }
-
-            Destroy(gameObject);
         }
     }
 }

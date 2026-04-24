@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Enemy_Soviet_Thrower : MonoBehaviour{
 
-
-    public GameObject camera;
+    public AudioSource hitSound;
+    public AudioSource deathSound;
 
     public GameObject player;
 
@@ -22,9 +22,7 @@ public class Enemy_Soviet_Thrower : MonoBehaviour{
     
     void Start()
     {
-        if(GetComponent<Camera>() == null){
-            print("Enemy_SovietNormal Script is missing camera object reference ");
-        }
+    
         
         transform.parent.gameObject.transform.rotation = new Quaternion(0f,0f,0f,0f);
     }

@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6603822433621643053}
-  - component: {fileID: 6603822432913466341}
   - component: {fileID: 6603822433621643043}
+  - component: {fileID: 6603822432913466341}
   - component: {fileID: 6603822433621643052}
   m_Layer: 0
   m_Name: FirstPersonCharacter
@@ -33,6 +33,14 @@ Transform:
   m_Father: {fileID: 6603822434107101465}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &6603822433621643043
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6603822433621643054}
+  m_Enabled: 1
 --- !u!20 &6603822432913466341
 Camera:
   m_ObjectHideFlags: 0
@@ -76,14 +84,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &6603822433621643043
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6603822433621643054}
-  m_Enabled: 1
 --- !u!124 &6603822433621643052
 Behaviour:
   m_ObjectHideFlags: 0
@@ -176,11 +176,6 @@ MonoBehaviour:
     smoothTime: 5
     lockCursor: 1
   m_StepInterval: 5
-  m_FootstepSounds:
-  - {fileID: 8300000, guid: 42e65e088b3f4374e851b8dbd38f3df9, type: 3}
-  - {fileID: 8300000, guid: 8bc94ec6ed537e743b481638bdcd503d, type: 3}
-  m_JumpSound: {fileID: 8300000, guid: 5897aeed9b676024fbb8c694b421a861, type: 3}
-  m_LandSound: {fileID: 8300000, guid: 3b09d59f4499d45428baa7a21e954296, type: 3}
 --- !u!54 &6603822434107101469
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -207,8 +202,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 2343e713ce48a483fbf154b7747e2654, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -322,5 +317,6 @@ MonoBehaviour:
   screen: {fileID: 0}
   playerGun: {fileID: 0}
   gunModel: {fileID: 0}
+  playerHit: {fileID: 6603822434107101470}
   gunVisuals: {fileID: 0}
   weaponText: {fileID: 0}
