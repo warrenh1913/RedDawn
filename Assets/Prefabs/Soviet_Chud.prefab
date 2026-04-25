@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8421752321866081809}
   - component: {fileID: 7639772235578233088}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Soviet_Chud
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63,9 +63,9 @@ GameObject:
   - component: {fileID: 5591783571207046465}
   - component: {fileID: 618668708200597103}
   - component: {fileID: 1752255984972431770}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Panel
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

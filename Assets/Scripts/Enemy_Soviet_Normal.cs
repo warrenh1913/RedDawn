@@ -69,7 +69,7 @@ public class Enemy_Soviet_Normal : MonoBehaviour
             hitCooldown--;
             if(hitCooldown <= 0){
                 hit.collider.gameObject.GetComponent<Player_Script>().hitPlayer(10);
-                print("hit player");
+                
                 hitCooldown = 800;
             }
         }else{

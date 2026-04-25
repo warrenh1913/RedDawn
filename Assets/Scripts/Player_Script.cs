@@ -29,6 +29,8 @@ public class Player_Script : MonoBehaviour
 
     private Animator canvasAnimator;
 
+    public GameManager gameManager;
+
      private int currentWeapon = 1;
     // Start is called before the first frame update
     void Start()
@@ -199,8 +201,12 @@ public class Player_Script : MonoBehaviour
     public void hitPlayer(int damage){
         playPlayerHit = true;
         canvasAnimator.SetBool("EnemyHits",true);
-        print("player hit");
         health -= damage;
+        UpdateAmmoUI();
+        if(health <= 0){
+            gameManager.gameOver();
+            //Destroy(gameObject);
+        }
     }
 
     //ADDED UIAMMO
