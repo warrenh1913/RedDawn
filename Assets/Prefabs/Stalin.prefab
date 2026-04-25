@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 4861494565285474050}
   - component: {fileID: 4861494565285474051}
   - component: {fileID: 4861494565285474052}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Panel
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -159,9 +159,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4861494566116254040}
   - component: {fileID: 4861494566116254041}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Stalin
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  movementSpeed: 4
+  movementSpeed: 5
   moveToRange: 1
   sides: 3
   panel: {fileID: 4861494565285474056}

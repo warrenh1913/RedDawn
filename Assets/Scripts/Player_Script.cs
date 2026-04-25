@@ -7,7 +7,7 @@ public class Player_Script : MonoBehaviour
 {
     float cooldown = 0.5f;
     
-    int health = 10;
+    int health = 100;
     
     
     private char gunEquipped = 'p';
