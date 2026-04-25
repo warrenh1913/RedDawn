@@ -38,6 +38,7 @@ public class Hit_Enemy : MonoBehaviour
             temp.GetComponent<Look_At_Player>().setPlayer(transform.parent.GetComponent<Move_To_Player>().player);
 
             transform.parent.gameObject.GetComponent<Move_To_Player>().enemyDied();
+            
             Destroy(gameObject);
         }
     }

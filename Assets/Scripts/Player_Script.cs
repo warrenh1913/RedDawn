@@ -7,7 +7,7 @@ public class Player_Script : MonoBehaviour
 {
     float cooldown = 0.5f;
     
-    int health = 100;
+    int health = 10;
     
     
     private char gunEquipped = 'p';
@@ -28,6 +28,8 @@ public class Player_Script : MonoBehaviour
     private int machinegunCount = 0;
 
     private Animator canvasAnimator;
+
+    public GameManager gameManager;
 
      private int currentWeapon = 1;
     // Start is called before the first frame update
@@ -199,8 +201,12 @@ public class Player_Script : MonoBehaviour
     public void hitPlayer(int damage){
         playPlayerHit = true;
         canvasAnimator.SetBool("EnemyHits",true);
-        print("player hit");
         health -= damage;
+        UpdateAmmoUI();
+        if(health <= 0){
+            gameManager.gameOver();
+            //Destroy(gameObject);
+        }
     }
 
     //ADDED UIAMMO
