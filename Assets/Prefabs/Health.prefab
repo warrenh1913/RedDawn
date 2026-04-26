@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8210067433449325972}
   - component: {fileID: 8210067433449325963}
   - component: {fileID: 8210067433449325962}
-  - component: {fileID: 8210067433449325961}
+  - component: {fileID: -6626821483874389324}
   m_Layer: 0
   m_Name: Health
   m_TagString: Untagged
@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healAmount: 25
---- !u!114 &8210067433449325961
+--- !u!114 &-6626821483874389324
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -120,6 +120,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 8210067433449325960}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51b81440f2fdf59439f6e8881c36101f, type: 3}
+  m_Script: {fileID: 11500000, guid: 9fabc57c43d321c4bbaca01cd3826b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
