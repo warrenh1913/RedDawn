@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class Player_Script : MonoBehaviour
 {
     float cooldown = 0.5f;
-    
+
     int health = 100;
-    
-    
+
+
     private char gunEquipped = 'p';
 
     public GameObject screen;
@@ -20,7 +20,7 @@ public class Player_Script : MonoBehaviour
     public AudioSource playerHit;
 
     public Gun_Visuals gunVisuals;
-    
+
     public Text weaponText;
 
     private bool playPlayerHit = false;
@@ -31,7 +31,12 @@ public class Player_Script : MonoBehaviour
 
     public GameManager gameManager;
 
-     private int currentWeapon = 1;
+    private int currentWeapon = 1;
+
+    // ADDED: weapon unlock flags
+    private bool hasShotgun = false;
+    private bool hasMachinegun = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,23 +50,25 @@ public class Player_Script : MonoBehaviour
         }
 
         canvasAnimator = screen.GetComponent<Animator>();
-//        print("canvas anim is " + canvasAnimator == null);
+        //        print("canvas anim is " + canvasAnimator == null);
         //playerHit.clip.preloadAudioData = true;
 
         UpdateWeapon();
 
-      
+
     }
 
 
     // Update is called once per frame
 
     /* Switch weapons */
-    void Update(){
+    void Update()
+    {
 
-        if(playPlayerHit){
+        if (playPlayerHit)
+        {
             playerHit.PlayOneShot(playerHit.clip);
-            
+
             playPlayerHit = false;
         }
 
@@ -70,12 +77,14 @@ public class Player_Script : MonoBehaviour
             currentWeapon = 1;
             UpdateWeapon();
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        // CHANGED: only allow shotgun after pickup
+        else if (Input.GetKeyDown(KeyCode.Alpha2) && hasShotgun)
         {
             currentWeapon = 2;
             UpdateWeapon();
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        // CHANGED: only allow machine gun after pickup
+        else if (Input.GetKeyDown(KeyCode.Alpha3) && hasMachinegun)
         {
             currentWeapon = 3;
             UpdateWeapon();
@@ -83,39 +92,46 @@ public class Player_Script : MonoBehaviour
         UpdateAmmoUI();
 
         /* Pistol & Shotgun*/
-        if (Input.GetButtonDown("Fire1") && playerGun.GetComponent<Gun_Pistol>().checkAmmo(gunEquipped)) {
-      if(gunEquipped == 'p'){
-        playerGun.GetComponent<Gun_Pistol>().shootPistol();
-    }
-    else if(gunEquipped == 's'){
-        playerGun.GetComponent<Gun_Pistol>().shootShotgun();
-    }
-    
-    //screen.transform.Find("Ammo").transform.Find("AmmoCounter").GetComponent<Text>().text = ammo.ToString();
-}
+        if (Input.GetButtonDown("Fire1") && playerGun.GetComponent<Gun_Pistol>().checkAmmo(gunEquipped))
+        {
+            if (gunEquipped == 'p')
+            {
+                playerGun.GetComponent<Gun_Pistol>().shootPistol();
+            }
+            else if (gunEquipped == 's')
+            {
+                playerGun.GetComponent<Gun_Pistol>().shootShotgun();
+            }
+
+            //screen.transform.Find("Ammo").transform.Find("AmmoCounter").GetComponent<Text>().text = ammo.ToString();
+        }
 
 
-    if(!Input.GetButton("Fire1")){
-        machinegunCount = 0;
-    } 
-    /* Machine Gun */
-    if(Input.GetButton("Fire1") && gunEquipped == 'm' && playerGun.GetComponent<Gun_Pistol>().checkAmmo(gunEquipped)) {
+        if (!Input.GetButton("Fire1"))
+        {
+            machinegunCount = 0;
+        }
+        /* Machine Gun */
+        if (Input.GetButton("Fire1") && gunEquipped == 'm' && playerGun.GetComponent<Gun_Pistol>().checkAmmo(gunEquipped))
+        {
 
-        
-        
-        playerGun.GetComponent<Gun_Pistol>().shootMachinegun(machinegunCount);
-        
-        machinegunCount++;
 
-    
-        //screen.transform.Find("Ammo").transform.Find("AmmoCounter").GetComponent<Text>().text = ammo.ToString();
-    }
+
+            playerGun.GetComponent<Gun_Pistol>().shootMachinegun(machinegunCount);
+
+            machinegunCount++;
+
+
+            //screen.transform.Find("Ammo").transform.Find("AmmoCounter").GetComponent<Text>().text = ammo.ToString();
+        }
         //print("player X: " + transform.position.x + " Player Y: " + transform.position.y);
 
         //print(transform.Find("Main Camera").transform.rotation.y * 360);
     }
-    void UpdateWeapon() {
-       switch(currentWeapon){
+    void UpdateWeapon()
+    {
+        switch (currentWeapon)
+        {
             case 1:
                 gunEquipped = 'p';
                 if (gunModel != null) gunModel.SwitchToPistol();
@@ -130,7 +146,7 @@ public class Player_Script : MonoBehaviour
                 break;
         }
         UpdateWeaponUI();
-        
+
     }
 
     void UpdateWeaponUI()
@@ -171,7 +187,7 @@ public class Player_Script : MonoBehaviour
     {
         health += num;
         screen.transform.Find("Health").transform.Find("HealthCounter").GetComponent<Text>().text = health.ToString();
-        canvasAnimator.SetBool("PlayerHeals",true);
+        canvasAnimator.SetBool("PlayerHeals", true);
         if (health > 100)
         {
             health = 100;
@@ -198,12 +214,14 @@ public class Player_Script : MonoBehaviour
     }
 
     */
-    public void hitPlayer(int damage){
+    public void hitPlayer(int damage)
+    {
         playPlayerHit = true;
-        canvasAnimator.SetBool("EnemyHits",true);
+        canvasAnimator.SetBool("EnemyHits", true);
         health -= damage;
         UpdateAmmoUI();
-        if(health <= 0){
+        if (health <= 0)
+        {
             gameManager.gameOver();
             //Destroy(gameObject);
         }
@@ -218,7 +236,7 @@ public class Player_Script : MonoBehaviour
         {
             return;
         }
-        
+
 
         if (gunEquipped == 'p')
         {
@@ -234,7 +252,20 @@ public class Player_Script : MonoBehaviour
         }
         screen.transform.Find("Health").transform.Find("HealthCounter").GetComponent<Text>().text = health.ToString();
     }
-    
 
+    // ADDED: called by shotgun pickup
+    public void UnlockShotgun()
+    {
+        hasShotgun = true;
+        currentWeapon = 2;
+        UpdateWeapon();
+    }
 
+    // ADDED: called by machine gun pickup
+    public void UnlockMachinegun()
+    {
+        hasMachinegun = true;
+        currentWeapon = 3;
+        UpdateWeapon();
+    }
 }
