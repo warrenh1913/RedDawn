@@ -32,6 +32,8 @@ public class Move_To_Player : MonoBehaviour
     private bool objectLeft = false;
     private bool objectRight = false;
 
+    private float distanceToPlayer = 0f;
+
     public GameObject panel;
 
     private float width;
@@ -103,8 +105,10 @@ public class Move_To_Player : MonoBehaviour
         
         if(seePlayer()){
         //print("can see players");
+        lastPlayerPosition = new Vector3(0,0,0);
+
         playerTransform = player.GetComponent<Transform>();
-        float moveX; float moveZ;
+        
 
         float comp = playerTransform.position.x - transform.position.x;
 
@@ -153,7 +157,7 @@ public class Move_To_Player : MonoBehaviour
             
             
             }else{
-                if(lastPlayerPosition != new Vector3(0,0,0)){
+                if(lastPlayerPosition != new Vector3(0,0,0) && distanceToPlayer > moveToRange){
 
                     Vector3 toPlayer = (lastPlayerPosition - transform.position).normalized;
                     toPlayer.y = 0;
@@ -187,25 +191,9 @@ public class Move_To_Player : MonoBehaviour
     
     }
 
-//     void OnDrawGizmos(){
-//         Gizmos.color = Color.red;
-// 
-//         Gizmos.matrix = panel.transform.localToWorldMatrix;
-// 
-//         //print(panel.transform.localToWorldMatrix);
-//         //print(panel.GetComponent<MeshFilter>().sharedMesh.bounds.size);
-//         if(Application.isPlaying){
-//             Gizmos.DrawWireCube(Vector3.zero, new Vector3(10,.1f,10));
-//         }
-//     }
-
-    ArrayList futurePosition(){
 
 
-        
-
-        return null;
-    }
+    
 
 
 
@@ -224,9 +212,10 @@ public class Move_To_Player : MonoBehaviour
         Physics.Raycast(transform.position,temp * 50 ,out hit, 50,viewPlayerMask);
         
         //Debug.DrawRay(transform.position, temp * 50, Color.green, 50);
-
-        
-        if(hit.collider == null || hit.distance < moveToRange){
+        if(hit.collider != null){
+            distanceToPlayer = hit.distance;
+        }
+        if(hit.collider == null || distanceToPlayer < moveToRange){
             return false;
         }else{
             return hit.collider.tag == "Player";

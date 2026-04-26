@@ -265,7 +265,9 @@ public class Gun_Pistol : MonoBehaviour
 
         if(hit.collider != null){
             if(hit.collider.tag == "enemy"){
-            hit.collider.gameObject.GetComponent<Hit_Enemy>().hitEnemy(25);
+            if(hit.collider.gameObject.GetComponent<Hit_Enemy>().hitEnemy(25)){
+                transform.parent.transform.parent.GetComponent<Player_Script>().gameManager.addEnemyDeath();
+            }
             Vector3 temp = (transform.position - hit.collider.transform.position).normalized;
 
             Instantiate(bloodSplat,hit.point-transform.forward,Quaternion.LookRotation(temp));
@@ -305,10 +307,13 @@ public class Gun_Pistol : MonoBehaviour
 
             if(hit.collider != null){
             if(hit.collider.tag == "enemy"){
-            hit.collider.gameObject.GetComponent<Hit_Enemy>().hitEnemy(10);
+            if(hit.collider.gameObject.GetComponent<Hit_Enemy>().hitEnemy(10)){
+                transform.parent.transform.parent.GetComponent<Player_Script>().gameManager.addEnemyDeath();
+            }
             Vector3 temp = (transform.position - hit.collider.transform.position).normalized;
 
             Instantiate(bloodSplat,hit.point-transform.forward,Quaternion.LookRotation(temp));
+            
             }else if(hit.collider.tag == "projectile"){
                 Destroy(hit.collider.gameObject);
             }
@@ -357,7 +362,9 @@ public class Gun_Pistol : MonoBehaviour
 
         if(hit.collider != null){
             if(hit.collider.tag == "enemy"){
-            hit.collider.gameObject.GetComponent<Hit_Enemy>().hitEnemy(15);
+            if(hit.collider.gameObject.GetComponent<Hit_Enemy>().hitEnemy(15)){
+                transform.parent.transform.parent.GetComponent<Player_Script>().gameManager.addEnemyDeath();
+            }
             Vector3 temp = (transform.position - hit.collider.transform.position).normalized;
 
             Instantiate(bloodSplat,hit.point-transform.forward,Quaternion.LookRotation(temp));

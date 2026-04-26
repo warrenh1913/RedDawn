@@ -9,14 +9,19 @@ public class Enemy_Soviet_Normal : MonoBehaviour
     public AudioSource deathSound;
     public GameObject player;
 
-    private int hitCooldown = 100;
+    private float hitCooldown = 1f;
 
     private int health = 125;
+
+    private LayerMask wallPlayerMask;
+
+    float timePassed = 0f;
      
     void Start()
     {
 
         transform.parent.gameObject.transform.rotation = new Quaternion(0f,0f,0f,0f);
+        wallPlayerMask = LayerMask.GetMask("Player","Wall");
 
     }
 
@@ -66,14 +71,16 @@ public class Enemy_Soviet_Normal : MonoBehaviour
 
 
         if(hit.collider != null && hit.collider.tag == "Player"){
-            hitCooldown--;
-            if(hitCooldown <= 0){
+            //print(timePassed);
+            timePassed += Time.deltaTime;
+            
+            if(timePassed >= hitCooldown){
                 hit.collider.gameObject.GetComponent<Player_Script>().hitPlayer(10);
                 
-                hitCooldown = 800;
+                timePassed = 0f;
             }
         }else{
-            hitCooldown = 100;
+            timePassed = 0f;
         }
         Debug.DrawRay(transform.position, (player.transform.position - transform.position).normalized * 2.5f, Color.red, 50);
         return false;

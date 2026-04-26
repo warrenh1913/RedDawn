@@ -159,6 +159,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5570677073938996205}
   - component: {fileID: 5570677073938996206}
+  - component: {fileID: 5059524170612850479}
   m_Layer: 9
   m_Name: Soviet_Normal
   m_TagString: enemy
@@ -198,3 +199,19 @@ MonoBehaviour:
   moveToRange: 1
   sides: 1
   panel: {fileID: 5570677073928886710}
+--- !u!114 &5059524170612850479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5570677073938996207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8261876e06c22284abd594f63754eb12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  possibleDrops:
+  - {fileID: 8210067433449325960, guid: 1fa227df5e666e4479205f374608c515, type: 3}
+  - {fileID: 7155055547531919601, guid: 9fc2ad615ad7a34438747b15c8835931, type: 3}
+  dropChance: 0.25
