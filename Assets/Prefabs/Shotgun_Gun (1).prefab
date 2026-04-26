@@ -92,8 +92,8 @@ GameObject:
   - component: {fileID: 2227484794501336381}
   - component: {fileID: 2231922110488629396}
   - component: {fileID: 2231922110488629393}
-  - component: {fileID: 2231922110488629395}
   - component: {fileID: 2231922110488629397}
+  - component: {fileID: 3922166906515080518}
   m_Layer: 8
   m_Name: Shotgun_Gun (1)
   m_TagString: Untagged
@@ -146,7 +146,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 0.5, z: 0.2}
   m_Center: {x: 0.25, y: 0, z: 0}
---- !u!82 &2231922110488629395
+--- !u!114 &2231922110488629397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2232868487258255427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74358c4f10038ff4bbf60898ede81b99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!82 &3922166906515080518
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -242,18 +254,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2231922110488629397
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2232868487258255427}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74358c4f10038ff4bbf60898ede81b99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2233155594575006305
 GameObject:
   m_ObjectHideFlags: 0

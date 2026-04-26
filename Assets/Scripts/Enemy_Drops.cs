@@ -5,8 +5,11 @@ public class Enemy_Drops : MonoBehaviour
     public GameObject[] possibleDrops;
     [Range(0f, 1f)] public float dropChance = 1f;
 
-    private void OnDestroy()
-    {
+
+
+    public void dropItem(){
+
+        
         if (!Application.isPlaying)
             return;
 
@@ -22,5 +25,7 @@ public class Enemy_Drops : MonoBehaviour
         {
             Instantiate(possibleDrops[randomIndex], transform.position, Quaternion.identity);
         }
+
+        
     }
 }

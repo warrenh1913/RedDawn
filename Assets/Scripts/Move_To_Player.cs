@@ -32,6 +32,8 @@ public class Move_To_Player : MonoBehaviour
     private bool objectLeft = false;
     private bool objectRight = false;
 
+    private bool dead = false;
+
     private float distanceToPlayer = 0f;
 
     public GameObject panel;
@@ -41,6 +43,8 @@ public class Move_To_Player : MonoBehaviour
     private LayerMask wallMask;
 
     private LayerMask viewPlayerMask;
+
+    public AudioSource deathNoise;
 
     void Start(){
         if(player == null){
@@ -79,7 +83,7 @@ public class Move_To_Player : MonoBehaviour
     // Update is called once per frame
     void Update(){
 
-        
+        if(!dead){
         //right
         Physics.Raycast(panel.transform.position + panel.transform.right * width/2,panel.transform.right * sides,out checkRight,1f,wallMask);
         Debug.DrawRay(panel.transform.position + panel.transform.right * width/2,panel.transform.right * sides, Color.green, 25);
@@ -90,7 +94,7 @@ public class Move_To_Player : MonoBehaviour
 
         if(checkLeft.collider != null){
             objectLeft = true;
-            print("object left");
+            //print("object left");
         }else{
             objectLeft = false;
         }
@@ -98,7 +102,7 @@ public class Move_To_Player : MonoBehaviour
 
         if(checkRight.collider != null){
             objectRight = true;
-            print("object right");
+            //print("object right");
         }else{
             objectRight = false;
         }
@@ -141,10 +145,10 @@ public class Move_To_Player : MonoBehaviour
 
             
             if(objectLeft && objectRight){
-                print("both objects hit");
+                //print("both objects hit");
                 transform.Translate(panel.transform.forward * Time.deltaTime * realSpeed,Space.Self);
             }else if(objectLeft){
-                print("left object hit");
+                //print("left object hit");
                 transform.Translate(((panel.transform.forward + new Vector3(-panel.transform.forward.x,0,0)) + (panel.transform.right * .4f)) * Time.deltaTime * realSpeed,Space.Self);
             }else if(objectRight){
                 print("right object hit");
@@ -181,7 +185,8 @@ public class Move_To_Player : MonoBehaviour
                     lastPlayerPosition = new Vector3(0,0,0);
                     }
                 }
-            }
+        }
+    }
 
             
 
@@ -223,7 +228,12 @@ public class Move_To_Player : MonoBehaviour
     }
 
     public void enemyDied(){
-        Destroy(gameObject);
+        dead = true;
+        transform.Find("Panel").gameObject.SetActive(false);
+        deathNoise.PlayOneShot(deathNoise.clip);
+
+
+        Destroy(gameObject,deathNoise.clip.length);
     }
 
     

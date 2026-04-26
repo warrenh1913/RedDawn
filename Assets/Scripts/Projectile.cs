@@ -7,6 +7,8 @@ public class Projectile : MonoBehaviour
     // Start is called before the first frame update
 
     private float speed = 10f;
+
+    public int enemyDamage = 15;
     void Start()
     {
         //transform.Rotate();
@@ -35,7 +37,7 @@ public class Projectile : MonoBehaviour
         
         if(c.gameObject.tag == "Player"){
             print("collided");
-            c.gameObject.GetComponent<Player_Script>().hitPlayer(10);
+            c.gameObject.GetComponent<Player_Script>().hitPlayer(enemyDamage);
             Destroy(gameObject);
         }else if(c.gameObject.tag == "enemy"){
             

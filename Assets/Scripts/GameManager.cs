@@ -21,6 +21,11 @@ public class GameManager : MonoBehaviour
 
     private bool gameStart = true;
 
+    public AudioClip playerDeath;
+    public AudioClip niceJob;
+
+    public GameObject Music;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +54,7 @@ public class GameManager : MonoBehaviour
             userInterface.transform.Find("StartScreen").gameObject.SetActive(false);
 
             Time.timeScale = 1f;
+            Music.SetActive(true);
         }
         
     }
@@ -65,7 +71,10 @@ public class GameManager : MonoBehaviour
         //player.GetComponent<FirstPersonController>().enabled = false;
         //player.SetActive(false);
         isGameOver = true;
+
+        AudioSource.PlayClipAtPoint(playerDeath,player.transform.position,1.0f);
         Time.timeScale = 0f;
+        
         
 
 
@@ -81,13 +90,14 @@ public class GameManager : MonoBehaviour
 
         userInterface.transform.Find("GameWinText").GetComponent<Text>().text = "Time: " + ((int)timePassed).ToString() +"\n" 
         + "Enemies Killed: " +  killedEnemies + "/" + enemyCount  +"\n" 
-        +  "Total Score: " + (int)(5000 + (timePassed * -5) + ((enemyCount - killedEnemies) * -25) ) +  "\n" 
+        +  "Total Score: " + (int)(5000 + (timePassed * -5) + ((enemyCount - killedEnemies) * -50) ) +  "\n" 
         +  "Press R to Restart\n";
         userInterface.transform.Find("GameWinText").gameObject.SetActive(true);
         userInterface.transform.Find("gameWin").gameObject.SetActive(true);
 
         player.GetComponent<Player_Script>().enabled = false;
         isGameOver = true;
+        AudioSource.PlayClipAtPoint(niceJob,player.transform.position,1.0f);
         Time.timeScale = 0f;
 
     }
