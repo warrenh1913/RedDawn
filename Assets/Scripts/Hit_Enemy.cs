@@ -34,16 +34,24 @@ public class Hit_Enemy : MonoBehaviour
         health -= damage;
         print("hit enemy for " + damage + " damage");
         if(health <= 0 && !enemyDied){
+
+            
             
             enemyDied = true;
             GameObject temp = Instantiate(deadSprite,transform.position,Quaternion.LookRotation(transform.forward));
             temp.GetComponent<Look_At_Player>().setPlayer(transform.parent.GetComponent<Move_To_Player>().player);
 
-            transform.parent.gameObject.GetComponent<Move_To_Player>().enemyDied();
+            if(transform.parent.gameObject.GetComponent<Enemy_Drops>() != null){
+                transform.parent.gameObject.GetComponent<Enemy_Drops>().dropItem();
+            }
+            //transform.parent.gameObject
+
             
-            Destroy(gameObject);
+            transform.parent.gameObject.GetComponent<Move_To_Player>().enemyDied();
+
             return true;
         }else{
+
             return false;
         }
     }

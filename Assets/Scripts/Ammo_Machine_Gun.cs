@@ -15,7 +15,9 @@ public class Ammo_Machine_Gun : MonoBehaviour
             if (gun != null)
             {
                 pickedUp = true;
-                transform.GetComponent<SpriteRenderer>().enabled = false;
+                if(transform.GetComponent<SpriteRenderer>() != null){
+                    transform.GetComponent<SpriteRenderer>().enabled = false;
+                }
                 gun.AddMachinegunAmmo(machinegunAmount);
                 AudioSource temp = GetComponent<AudioSource>();
                 temp.PlayOneShot(temp.clip);

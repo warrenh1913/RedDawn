@@ -176,6 +176,8 @@ public class Gun_Pistol : MonoBehaviour
     private float shotgunCooldown = 0.7f;
     private float machinegunCooldown = 0.2f;
 
+    LayerMask enemyWallMask;
+
     void Start()
     {
         gunPos = GetComponent<Transform>();
@@ -183,6 +185,7 @@ public class Gun_Pistol : MonoBehaviour
         {
             print("fail");
         }
+        enemyWallMask = LayerMask.GetMask("Enemy","Projectile","Wall");
     }
 
     void Update()
@@ -260,7 +263,7 @@ public class Gun_Pistol : MonoBehaviour
         if (gunVisuals != null) gunVisuals.PlayPistolEffects();
 
         RaycastHit hit;
-        Physics.Raycast(transform.position, transform.forward * 50, out hit, 50f);
+        Physics.Raycast(transform.position, transform.forward * 50, out hit, 50f,enemyWallMask);
         Debug.DrawRay(transform.position, transform.forward * 50, Color.green, 10f);
 
         if(hit.collider != null){
@@ -302,7 +305,7 @@ public class Gun_Pistol : MonoBehaviour
             Vector3 vecX = transform.forward + transform.right * Random.Range(-.25f, .25f);
             Vector3 findRot = vecX.normalized;
 
-            Physics.Raycast(transform.position, findRot, out hit, 10f);
+            Physics.Raycast(transform.position, findRot, out hit, 10f,enemyWallMask);
             Debug.DrawRay(transform.position, findRot * 10f, Color.green, 10f);
 
             if(hit.collider != null){
@@ -351,12 +354,12 @@ public class Gun_Pistol : MonoBehaviour
 
             Vector3 vecX = transform.forward + recoil;
 
-            Physics.Raycast(transform.position, vecX.normalized, out hit, 40f);
+            Physics.Raycast(transform.position, vecX.normalized, out hit, 40f,enemyWallMask);
             Debug.DrawRay(transform.position, vecX * 40, Color.green, 10f);
         }
         else
         {
-            Physics.Raycast(transform.position, transform.forward, out hit, 50f);
+            Physics.Raycast(transform.position, transform.forward, out hit, 50f,enemyWallMask);
             Debug.DrawRay(transform.position, transform.forward * 50, Color.green, 10f);
         }
 

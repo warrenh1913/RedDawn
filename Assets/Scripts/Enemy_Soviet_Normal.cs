@@ -16,6 +16,8 @@ public class Enemy_Soviet_Normal : MonoBehaviour
     private LayerMask wallPlayerMask;
 
     float timePassed = 0f;
+
+    public int enemyDamage = 15;
      
     void Start()
     {
@@ -75,7 +77,7 @@ public class Enemy_Soviet_Normal : MonoBehaviour
             timePassed += Time.deltaTime;
             
             if(timePassed >= hitCooldown){
-                hit.collider.gameObject.GetComponent<Player_Script>().hitPlayer(10);
+                hit.collider.gameObject.GetComponent<Player_Script>().hitPlayer(enemyDamage);
                 
                 timePassed = 0f;
             }
