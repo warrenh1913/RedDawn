@@ -5483,6 +5483,7 @@ MonoBehaviour:
   playerHit: {fileID: 7423042265778383214}
   gunVisuals: {fileID: 4370334555268316543}
   weaponText: {fileID: 0}
+  gameManager: {fileID: 0}
 --- !u!1 &7423042266360313694
 GameObject:
   m_ObjectHideFlags: 0
@@ -5752,6 +5753,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4370334555268316541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4369427622088690845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 714a2d4929cb8dc4d976a0dec0d6fbd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunVisuals: {fileID: 4370334555055984620}
+  bloodSplat: {fileID: 0}
 --- !u!114 &4370334555268316543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5768,20 +5783,6 @@ MonoBehaviour:
   pistolSound: {fileID: 4370334555310577142}
   shotgunSound: {fileID: 4370334555268316540}
   machinegunSound: {fileID: 4370334555051683794}
---- !u!114 &4370334555268316541
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4369427622088690845}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 714a2d4929cb8dc4d976a0dec0d6fbd0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gunVisuals: {fileID: 4370334555055984620}
-  bloodSplat: {fileID: 0}
 --- !u!1001 &4370334554276920572
 PrefabInstance:
   m_ObjectHideFlags: 0
