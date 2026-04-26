@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Player_Script : MonoBehaviour
 {
-    float cooldown = 0.5f;
+    
     
     int health = 100;
     
@@ -203,7 +203,7 @@ public class Player_Script : MonoBehaviour
         if(!canvasAnimator.GetBool("PlayingHit")){
             canvasAnimator.SetBool("EnemyHits",true);
         }
-        
+
         health -= damage;
         UpdateAmmoUI();
         if(health <= 0){

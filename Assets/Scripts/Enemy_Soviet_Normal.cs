@@ -9,7 +9,7 @@ public class Enemy_Soviet_Normal : MonoBehaviour
     public AudioSource deathSound;
     public GameObject player;
 
-    private float hitCooldown = 1.5f;
+    private float hitCooldown = 1f;
 
     private int health = 125;
 

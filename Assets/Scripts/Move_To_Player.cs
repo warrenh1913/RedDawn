@@ -108,7 +108,7 @@ public class Move_To_Player : MonoBehaviour
         lastPlayerPosition = new Vector3(0,0,0);
 
         playerTransform = player.GetComponent<Transform>();
-        float moveX; float moveZ;
+        
 
         float comp = playerTransform.position.x - transform.position.x;
 

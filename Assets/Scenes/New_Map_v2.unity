@@ -15524,7 +15524,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   userInterface: {fileID: 8393520941395889972}
-  enemyCount: 0
+  enemyCount: 39
   player: {fileID: 6603822433268448996}
 --- !u!4 &728794764
 Transform:
@@ -47038,6 +47038,14 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 728794763}
+    - target: {fileID: 4370334554324772980, guid: bf06787f8d62e58499b2ce6e0197ac74, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4370334555055984622, guid: bf06787f8d62e58499b2ce6e0197ac74, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7423042265778383209, guid: bf06787f8d62e58499b2ce6e0197ac74, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -47088,7 +47096,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7423042265778383212, guid: bf06787f8d62e58499b2ce6e0197ac74, type: 3}
       propertyPath: m_WalkSpeed
-      value: 25
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7423042266732419989, guid: bf06787f8d62e58499b2ce6e0197ac74, type: 3}
       propertyPath: field of view

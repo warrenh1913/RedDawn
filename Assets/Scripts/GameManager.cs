@@ -19,12 +19,15 @@ public class GameManager : MonoBehaviour
 
     private bool isGameOver;
 
+    private bool gameStart = true;
+
     // Start is called before the first frame update
     void Start()
     {
       //  userInterface.transform.Find("TimerText").GetComponent<Text>().text = timePassed.ToString("F1");
       mainScene = SceneManager.GetActiveScene();
       isGameOver = false;
+      Time.timeScale = 0f;
     }
 
     // Update is called once per frame
@@ -39,6 +42,13 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(mainScene.name);
             Time.timeScale = 1f;
             isGameOver = false;
+        }
+
+        if(gameStart && Input.GetKeyDown(KeyCode.W)){
+            gameStart = false;
+            userInterface.transform.Find("StartScreen").gameObject.SetActive(false);
+
+            Time.timeScale = 1f;
         }
         
     }
