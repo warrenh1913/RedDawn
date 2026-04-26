@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8421752321866081809}
   - component: {fileID: 7639772235578233088}
+  - component: {fileID: 4494875176470251993}
   m_Layer: 9
   m_Name: Soviet_Chud
   m_TagString: enemy
@@ -49,6 +50,21 @@ MonoBehaviour:
   moveToRange: 1
   sides: 3
   panel: {fileID: 1752255984972431772}
+--- !u!114 &4494875176470251993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963172547947140837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8261876e06c22284abd594f63754eb12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  possibleDrops:
+  - {fileID: 2879316300829999732, guid: c02caa548b52e634c8c510bb19e9f0ee, type: 3}
+  dropChance: 0.35
 --- !u!1 &1752255984972431772
 GameObject:
   m_ObjectHideFlags: 0

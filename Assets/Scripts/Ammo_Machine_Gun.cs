@@ -4,18 +4,22 @@ public class Ammo_Machine_Gun : MonoBehaviour
 {
     public int machinegunAmount = 25;
 
+    private bool pickedUp = false;
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && pickedUp != true)
         {
             Gun_Pistol gun = other.GetComponentInChildren<Gun_Pistol>();
 
             if (gun != null)
             {
+                pickedUp = true;
+                transform.GetComponent<SpriteRenderer>().enabled = false;
                 gun.AddMachinegunAmmo(machinegunAmount);
-                //AudioSource temp = GetComponent<AudioSource>();
-                //temp.PlayOneShot(temp.clip);
-                Destroy(gameObject);//,temp.clip.length);
+                AudioSource temp = GetComponent<AudioSource>();
+                temp.PlayOneShot(temp.clip);
+                Destroy(gameObject,temp.clip.length);
             }
         }
     }

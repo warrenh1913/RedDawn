@@ -18,6 +18,7 @@ public class Player_Script : MonoBehaviour
 
 
     public AudioSource playerHit;
+    public AudioClip playerDied;
 
     public Gun_Visuals gunVisuals;
 
