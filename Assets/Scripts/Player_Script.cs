@@ -200,7 +200,10 @@ public class Player_Script : MonoBehaviour
     */
     public void hitPlayer(int damage){
         playPlayerHit = true;
-        canvasAnimator.SetBool("EnemyHits",true);
+        if(!canvasAnimator.GetBool("PlayingHit")){
+            canvasAnimator.SetBool("EnemyHits",true);
+        }
+        
         health -= damage;
         UpdateAmmoUI();
         if(health <= 0){
