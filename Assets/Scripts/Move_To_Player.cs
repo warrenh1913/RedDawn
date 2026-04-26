@@ -12,7 +12,7 @@ public class Move_To_Player : MonoBehaviour
 
     
 
-    public int movementSpeed = 3;
+    public float movementSpeed = 3f;
     private float realSpeed;
     private Transform playerTransform;
 

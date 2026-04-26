@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  movementSpeed: 3
+  movementSpeed: 4
   moveToRange: 1
   sides: 3
   panel: {fileID: 1752255984972431772}
