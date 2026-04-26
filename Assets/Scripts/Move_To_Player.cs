@@ -86,11 +86,11 @@ public class Move_To_Player : MonoBehaviour
         if(!dead){
         //right
         Physics.Raycast(panel.transform.position + panel.transform.right * width/2,panel.transform.right * sides,out checkRight,1f,wallMask);
-        Debug.DrawRay(panel.transform.position + panel.transform.right * width/2,panel.transform.right * sides, Color.green, 25);
+        //Debug.DrawRay(panel.transform.position + panel.transform.right * width/2,panel.transform.right * sides, Color.green, 25);
 
         //left
         Physics.Raycast(panel.transform.position - panel.transform.right * width/2,-panel.transform.right * sides,out checkLeft,1f,wallMask);
-        Debug.DrawRay(panel.transform.position - panel.transform.right * width/2,panel.transform.right * -sides, Color.green, 25);
+        //Debug.DrawRay(panel.transform.position - panel.transform.right * width/2,panel.transform.right * -sides, Color.green, 25);
 
         if(checkLeft.collider != null){
             objectLeft = true;

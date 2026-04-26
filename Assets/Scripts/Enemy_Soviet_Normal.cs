@@ -84,7 +84,7 @@ public class Enemy_Soviet_Normal : MonoBehaviour
         }else{
             timePassed = 0f;
         }
-        Debug.DrawRay(transform.position, (player.transform.position - transform.position).normalized * 2.5f, Color.red, 50);
+        //Debug.DrawRay(transform.position, (player.transform.position - transform.position).normalized * 2.5f, Color.red, 50);
         return false;
 
     }
