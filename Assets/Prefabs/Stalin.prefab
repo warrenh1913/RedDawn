@@ -135,7 +135,7 @@ MonoBehaviour:
   hitSound: {fileID: 0}
   deathSound: {fileID: 0}
   player: {fileID: 0}
-  enemyDamage: 15
+  enemyDamage: 30
 --- !u!114 &4861494565285474052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfd3a6ff0309fd34b80d026f0107004d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 750
+  health: 850
   deadSprite: {fileID: 3125038227234920588, guid: d26cbbe607833d147aba230c3a53e5e3, type: 3}
 --- !u!1 &4861494566116254042
 GameObject:
@@ -197,7 +197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  movementSpeed: 6.5
+  movementSpeed: 6.85
   moveToRange: 1
   sides: 3
   panel: {fileID: 4861494565285474056}
