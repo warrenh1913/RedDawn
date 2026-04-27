@@ -1,7 +1,13 @@
 Library
 Temp
 Logs
+Assembly-CSharp.csproj
 UserSettings
+Packages
 .vs
 RedDawn.sln
 .vsCode
+.vsconfig
+.csproj
+.idea
+Assets/Scenes/Reactor_Base.unity.meta
