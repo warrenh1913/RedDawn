@@ -47199,6 +47199,10 @@ PrefabInstance:
       value: -51.286987
       objectReference: {fileID: 0}
     - target: {fileID: 4742654390388260947, guid: c17eea3858066b5498bcec16d6cf4f7f, type: 3}
+      propertyPath: m_Text
+      value: Use the top 1, 2, and 3 keys to switch weapons once picked up
+      objectReference: {fileID: 0}
+    - target: {fileID: 4742654390388260947, guid: c17eea3858066b5498bcec16d6cf4f7f, type: 3}
       propertyPath: m_Color.b
       value: 0.14161621
       objectReference: {fileID: 0}
@@ -47211,12 +47215,20 @@ PrefabInstance:
       value: 0.6415094
       objectReference: {fileID: 0}
     - target: {fileID: 4803321009299683069, guid: c17eea3858066b5498bcec16d6cf4f7f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 292.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 4803321009299683069, guid: c17eea3858066b5498bcec16d6cf4f7f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 81.8559
+      objectReference: {fileID: 0}
+    - target: {fileID: 4803321009299683069, guid: c17eea3858066b5498bcec16d6cf4f7f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 256
+      value: 244.83
       objectReference: {fileID: 0}
     - target: {fileID: 4803321009299683069, guid: c17eea3858066b5498bcec16d6cf4f7f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -207.5
+      value: -221.43146
       objectReference: {fileID: 0}
     - target: {fileID: 4810739770042529945, guid: c17eea3858066b5498bcec16d6cf4f7f, type: 3}
       propertyPath: m_Color.b
