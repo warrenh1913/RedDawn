@@ -75,7 +75,7 @@ public class Enemy_Soviet_Thrower : MonoBehaviour{
 
                 
 
-                Debug.DrawRay(transform.position, temp * 50, Color.green, 50);
+                //Debug.DrawRay(transform.position, temp * 50, Color.green, 50);
 
                 timePassed = 0;
 

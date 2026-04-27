@@ -32,7 +32,7 @@ public class Hit_Enemy : MonoBehaviour
 
     public bool hitEnemy(int damage){
         health -= damage;
-        print("hit enemy for " + damage + " damage");
+//        print("hit enemy for " + damage + " damage");
         if(health <= 0 && !enemyDied){
 
             

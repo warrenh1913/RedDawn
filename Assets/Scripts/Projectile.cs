@@ -36,7 +36,7 @@ public class Projectile : MonoBehaviour
     void OnCollisionEnter(Collision c){
         
         if(c.gameObject.tag == "Player"){
-            print("collided");
+//            print("collided");
             c.gameObject.GetComponent<Player_Script>().hitPlayer(enemyDamage);
             Destroy(gameObject);
         }else if(c.gameObject.tag == "enemy"){

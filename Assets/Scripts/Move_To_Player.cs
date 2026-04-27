@@ -12,7 +12,7 @@ public class Move_To_Player : MonoBehaviour
 
     
 
-    public int movementSpeed = 3;
+    public float movementSpeed = 3f;
     private float realSpeed;
     private Transform playerTransform;
 
@@ -86,11 +86,11 @@ public class Move_To_Player : MonoBehaviour
         if(!dead){
         //right
         Physics.Raycast(panel.transform.position + panel.transform.right * width/2,panel.transform.right * sides,out checkRight,1f,wallMask);
-        Debug.DrawRay(panel.transform.position + panel.transform.right * width/2,panel.transform.right * sides, Color.green, 25);
+        //Debug.DrawRay(panel.transform.position + panel.transform.right * width/2,panel.transform.right * sides, Color.green, 25);
 
         //left
         Physics.Raycast(panel.transform.position - panel.transform.right * width/2,-panel.transform.right * sides,out checkLeft,1f,wallMask);
-        Debug.DrawRay(panel.transform.position - panel.transform.right * width/2,panel.transform.right * -sides, Color.green, 25);
+        //Debug.DrawRay(panel.transform.position - panel.transform.right * width/2,panel.transform.right * -sides, Color.green, 25);
 
         if(checkLeft.collider != null){
             objectLeft = true;
@@ -151,10 +151,10 @@ public class Move_To_Player : MonoBehaviour
                 //print("left object hit");
                 transform.Translate(((panel.transform.forward + new Vector3(-panel.transform.forward.x,0,0)) + (panel.transform.right * .4f)) * Time.deltaTime * realSpeed,Space.Self);
             }else if(objectRight){
-                print("right object hit");
+ //               print("right object hit");
                 transform.Translate(((panel.transform.forward + new Vector3(-panel.transform.forward.x,0,0)) + (-panel.transform.right * .4f)) * Time.deltaTime * realSpeed,Space.Self);
             }else{
-                print("no objects hit");
+  //              print("no objects hit");
                 transform.Translate(panel.transform.forward * Time.deltaTime * realSpeed,Space.Self);
             }
             lastPlayerPosition = player.transform.position;
@@ -168,16 +168,16 @@ public class Move_To_Player : MonoBehaviour
 
 
                     if(objectLeft && objectRight){
-                    print("both objects hit");
+//                    print("both objects hit");
                     transform.Translate(toPlayer * Time.deltaTime * realSpeed,Space.Self);
                     }else if(objectLeft){
-                    print("left object hit");
+ //                   print("left object hit");
                     transform.Translate(((toPlayer + new Vector3(-toPlayer.x,0,0)) + (toPlayer * .2f)) * Time.deltaTime * realSpeed,Space.Self);
                     }else if(objectRight){
-                    print("right object hit");
+ //                   print("right object hit");
                     transform.Translate(((toPlayer + new Vector3(-toPlayer.x,0,0)) + (-toPlayer * .2f)) * Time.deltaTime * realSpeed,Space.Self);
                     }else{
-                    print("no objects hit");
+  //                  print("no objects hit");
                     transform.Translate(toPlayer * Time.deltaTime * realSpeed,Space.Self);
                     }
 

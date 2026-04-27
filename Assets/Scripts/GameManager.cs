@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour
 
 
 
-        print("player died");
+//        print("player died");
         //Destroy(player);
 
 
